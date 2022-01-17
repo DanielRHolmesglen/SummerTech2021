@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3827564920328894179}
   - component: {fileID: 422171892495636190}
   m_Layer: 0
-  m_Name: BowArrow
+  m_Name: DummyArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8769720354831018745
 Transform:
   m_ObjectHideFlags: 0
@@ -302,6 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5854968102729274337}
+  - component: {fileID: 1024449396828233868}
   m_Layer: 0
   m_Name: ArrowSocket
   m_TagString: Untagged
@@ -324,6 +325,18 @@ Transform:
   m_Father: {fileID: 2184250354899285390}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1024449396828233868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643195801666778238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fcc9dddfa72804daef596fa76688b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9074617112382092412
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +348,7 @@ GameObject:
   - component: {fileID: 2184250354899285390}
   - component: {fileID: 7299600452568669338}
   - component: {fileID: 7741949357624463882}
+  - component: {fileID: 2113510661}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -390,14 +404,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b098b00605b774e9731a300a4f719f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrowPrefab: {fileID: 6668657890513498218, guid: 034e93456c5151144922db8af370810f,
+  ArrowPrefab: {fileID: 3090284063468196158, guid: 034e93456c5151144922db8af370810f,
     type: 3}
   ArrowMesh: {fileID: 2710882164254552208}
   grabThreshold: 0.15
   arrowGrabPoint: {fileID: 8530623910207905572}
   bowGrabPoint: {fileID: 72021578016132557}
   fullDrawPoint: {fileID: 7373881061577481070}
+  startDrawPoint: {fileID: 2276901146224988944}
   arrowSocket: {fileID: 5854968102729274337}
+  pullValue: 0
+--- !u!95 &2113510661
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074617112382092412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1024449396402420140
 PrefabInstance:
   m_ObjectHideFlags: 0

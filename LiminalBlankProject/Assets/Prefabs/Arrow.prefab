@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6801703004436588806}
   - component: {fileID: 420590277969127164}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ArrowHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1377598268060911243}
   - component: {fileID: 3274396343040742944}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 7618916921386150626}
   - component: {fileID: 4814035873422976717}
   - component: {fileID: 3090284063468196158}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,6 +233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfea08edd4a02374b9ced6a84ad5d90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrowCollider: {fileID: 420590277969127164}
+  moveSpeed: 2000
+  tip: {fileID: 0}
 --- !u!1001 &298140931436824265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AlphaBowArrowMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a79d0baced0fe5c459c21d78696fb4db,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a79d0baced0fe5c459c21d78696fb4db,
         type: 3}

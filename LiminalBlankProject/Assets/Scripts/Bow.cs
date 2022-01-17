@@ -4,23 +4,24 @@ using Liminal.SDK.VR;
 using Liminal.SDK.VR.Input;
 using UnityEngine;
 
-public class Bow : MonoBehaviour
+public class Bow : MonoBehaviour, IGrabbable
 {
-    public GameObject ArrowPrefab; // for instatiating the shot arrow
-    public GameObject ArrowMesh; // for holding the arrow in the bow
+    public Arrow ArrowPrefab; // for instatiating the shot arrow
+    public GameObject ArrowMesh; // for holding an arrow in the bow
 
     public float grabThreshold = 0.15f;
     public BoxCollider arrowGrabPoint;
     public BoxCollider bowGrabPoint;
     public Transform fullDrawPoint;
-    public Transform startPoint;
+    public Transform startDrawPoint;
     public Transform arrowSocket;
 
+    private Transform holdingHand;
     private Transform pullingHand;
     private GameObject currentArrow; //'Arrow' in tutorial?
     private Animator animator;
 
-    private float pullValue = 0.0f;
+    [SerializeField]private float pullValue = 0.0f;
 
     
     // Start is called before the first frame update
@@ -42,11 +43,11 @@ public class Bow : MonoBehaviour
 
     private float CalculatePull(Transform pullHand)
     {
-        Vector3 direction = fullDrawPoint.position - startPoint.position;
+        Vector3 direction = fullDrawPoint.position - startDrawPoint.position;
         float magnitude = direction.magnitude;
 
         direction.Normalize();
-        Vector3 difference = pullHand.position - startPoint.position;
+        Vector3 difference = pullHand.position - startDrawPoint.position;
 
         return Vector3.Dot(difference, direction) / magnitude;
     }
@@ -54,16 +55,21 @@ public class Bow : MonoBehaviour
     private IEnumerator CreateDummyArrow(float waitTime)
     {
         // wait
+        // play arrow spawn particle fx
         yield return new WaitForSeconds(waitTime);
 
         // create, child
+        GameObject arrowObject = Instantiate(ArrowMesh, arrowSocket);
         //orient
+        arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
+        arrowObject.transform.localEulerAngles = Vector3.zero;
         //set
+        currentArrow = arrowObject.GetComponent<GameObject>();
     }
 
     public void Pull(Transform hand)
     {
-        float distance = Vector3.Distance(hand.position, startPoint.position);
+        float distance = Vector3.Distance(hand.position, startDrawPoint.position);
 
         if (distance > grabThreshold) return;
 
@@ -84,6 +90,11 @@ public class Bow : MonoBehaviour
     }
     private void FireArrow()
     {
+        ArrowPrefab.Fire(pullValue);
         ArrowPrefab = null;
+    }
+    public void Grab()
+    {
+
     }
 }
