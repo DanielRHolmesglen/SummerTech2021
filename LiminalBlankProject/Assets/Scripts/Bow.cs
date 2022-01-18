@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour, IGrabbable
 {
-    public Arrow ArrowPrefab; // for instatiating the shot arrow
+    public Arrow ArrowPrefab = null; // for instatiating the shot arrow
     public GameObject ArrowMesh; // for holding an arrow in the bow
 
     public float grabThreshold = 0.15f;
@@ -34,7 +34,7 @@ public class Bow : MonoBehaviour, IGrabbable
     // Update is called once per frame
     void Update()
     {
-        if (!pullingHand || !currentArrow) return;
+        if (!pullingHand || !ArrowPrefab) return;
         pullValue = CalculatePull(pullingHand);
         pullValue = Mathf.Clamp(pullValue, 0, 1);
 
@@ -54,16 +54,15 @@ public class Bow : MonoBehaviour, IGrabbable
 
     private IEnumerator CreateDummyArrow(float waitTime)
     {
-        // wait
+        
         // play arrow spawn particle fx
         yield return new WaitForSeconds(waitTime);
 
-        // create, child
         GameObject arrowObject = Instantiate(ArrowMesh, arrowSocket);
-        //orient
+        
         arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
         arrowObject.transform.localEulerAngles = Vector3.zero;
-        //set
+        
         currentArrow = arrowObject.GetComponent<GameObject>();
     }
 
@@ -95,6 +94,6 @@ public class Bow : MonoBehaviour, IGrabbable
     }
     public void Grab()
     {
-
+        //bowGrabPoint = GetComponent<BoxCollider>();
     }
 }
