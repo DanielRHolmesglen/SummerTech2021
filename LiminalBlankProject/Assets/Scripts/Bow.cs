@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour, IGrabbable
 {
-    public Arrow ArrowPrefab = null; // for instatiating the shot arrow
-    public GameObject ArrowMesh; // for holding an arrow in the bow
+    public Arrow arrowPrefab; // for instatiating the shot arrow
+    public GameObject arrowMesh; // for holding an arrow in the bow
+    public GameObject rightHand;
+    public GameObject leftHand;
 
     public float grabThreshold = 0.15f;
     public BoxCollider arrowGrabPoint;
@@ -20,6 +22,7 @@ public class Bow : MonoBehaviour, IGrabbable
     private Transform pullingHand;
     private GameObject currentArrow; //'Arrow' in tutorial?
     private Animator animator;
+    private bool bowIsHeld = false;
 
     [SerializeField]private float pullValue = 0.0f;
 
@@ -27,6 +30,7 @@ public class Bow : MonoBehaviour, IGrabbable
     // Start is called before the first frame update
     void Start()
     {
+        arrowGrabPoint.enabled = false;
         animator = GetComponent<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
     }
@@ -34,14 +38,14 @@ public class Bow : MonoBehaviour, IGrabbable
     // Update is called once per frame
     void Update()
     {
-        if (!pullingHand || !ArrowPrefab) return;
+        if (!pullingHand || !arrowPrefab) return;
         pullValue = CalculatePull(pullingHand);
         pullValue = Mathf.Clamp(pullValue, 0, 1);
 
         animator.SetFloat("Blend", pullValue);
     }
 
-    private float CalculatePull(Transform pullHand)
+    private float CalculatePull(Transform pullHand) // may need to manually assign pullHand
     {
         Vector3 direction = fullDrawPoint.position - startDrawPoint.position;
         float magnitude = direction.magnitude;
@@ -58,7 +62,7 @@ public class Bow : MonoBehaviour, IGrabbable
         // play arrow spawn particle fx
         yield return new WaitForSeconds(waitTime);
 
-        GameObject arrowObject = Instantiate(ArrowMesh, arrowSocket);
+        GameObject arrowObject = Instantiate(arrowMesh, arrowSocket);
         
         arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
         arrowObject.transform.localEulerAngles = Vector3.zero;
@@ -66,7 +70,7 @@ public class Bow : MonoBehaviour, IGrabbable
         currentArrow = arrowObject.GetComponent<GameObject>();
     }
 
-    public void Pull(Transform hand)
+    public void Pull(Transform hand) // assign pullHand
     {
         float distance = Vector3.Distance(hand.position, startDrawPoint.position);
 
@@ -78,8 +82,8 @@ public class Bow : MonoBehaviour, IGrabbable
     public void Release()
     {
         if (pullValue > 0.25f) FireArrow();
-
-        pullingHand = null;
+        // play release soundfx
+        pullingHand = null; // ???
 
         pullValue = 0;
         animator.SetFloat("Blend", 0);
@@ -89,11 +93,21 @@ public class Bow : MonoBehaviour, IGrabbable
     }
     private void FireArrow()
     {
-        ArrowPrefab.Fire(pullValue);
-        ArrowPrefab = null;
+        arrowPrefab.Fire(pullValue);
+        arrowPrefab.enabled = false;
     }
     public void Grab()
     {
-        //bowGrabPoint = GetComponent<BoxCollider>();
+        if (bowIsHeld)
+        {
+            // pull();
+            // may need to set other hand as parent for arrow grab point
+            return;
+        }
+
+        if (!bowIsHeld) { } // compare rightHand or leftHand and then set parent and pullingHand
+        
+        arrowGrabPoint.enabled = true;
+        
     }
 }

@@ -28,13 +28,13 @@ public class Arrow : MonoBehaviour
 
         if (Physics.Linecast(lastPosition, tip.position))
         {
-            Stop();
+            Hit();
         }
 
         lastPosition = tip.position;
     }
 
-    private void Stop() // turn into destroy and particle fx
+    private void Hit() // turn into destroy and particle fx
     {
         isStopped = true;
 
