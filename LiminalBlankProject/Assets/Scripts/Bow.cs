@@ -30,6 +30,7 @@ public class Bow : MonoBehaviour, IGrabbable
     // Start is called before the first frame update
     void Start()
     {
+        // rightHand.tag = "HoldingHand";
         arrowGrabPoint.enabled = false;
         animator = GetComponent<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
@@ -56,20 +57,7 @@ public class Bow : MonoBehaviour, IGrabbable
         return Vector3.Dot(difference, direction) / magnitude;
     }
 
-    private IEnumerator CreateDummyArrow(float waitTime)
-    {
-        
-        // play arrow spawn particle fx
-        yield return new WaitForSeconds(waitTime);
-
-        GameObject arrowObject = Instantiate(arrowMesh, arrowSocket);
-        
-        arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
-        arrowObject.transform.localEulerAngles = Vector3.zero;
-        
-        currentArrow = arrowObject.GetComponent<GameObject>();
-    }
-
+    
     public void Pull(Transform hand) // assign pullHand
     {
         float distance = Vector3.Distance(hand.position, startDrawPoint.position);
@@ -94,7 +82,21 @@ public class Bow : MonoBehaviour, IGrabbable
     private void FireArrow()
     {
         arrowPrefab.Fire(pullValue);
-        arrowPrefab.enabled = false;
+        arrowPrefab.enabled = false; // sould be arrowMesh?
+    }
+
+    private IEnumerator CreateDummyArrow(float waitTime)
+    {
+
+        // play arrow spawn particle fx
+        yield return new WaitForSeconds(waitTime);
+
+        GameObject arrowObject = Instantiate(arrowMesh, arrowSocket);
+
+        arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
+        arrowObject.transform.localEulerAngles = Vector3.zero;
+
+        currentArrow = arrowObject.GetComponent<GameObject>();
     }
     public void Grab()
     {
@@ -105,7 +107,8 @@ public class Bow : MonoBehaviour, IGrabbable
             return;
         }
 
-        if (!bowIsHeld) { } // compare rightHand or leftHand and then set parent and pullingHand
+        if (!bowIsHeld) { } // compare rightHand / leftHand and then set parent and set as holdingHand
+        // set other hand as pullingHand
         
         arrowGrabPoint.enabled = true;
         
