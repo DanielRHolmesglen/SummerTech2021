@@ -21,7 +21,7 @@ public class GrabbingHand : MonoBehaviour
     void FixedUpdate()
     {
         //Get the primaryInput
-        var primaryInput = VRDevice.Device.PrimaryInputDevice;
+        var primaryInput = VRDevice.Device.PrimaryInputDevice; // change to primary or secondary
 
         //check that button is being held, if so set handClosed to true
         if (primaryInput.GetButton(VRButton.One) || Input.GetMouseButton(0))

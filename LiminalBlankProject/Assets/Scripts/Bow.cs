@@ -4,10 +4,10 @@ using Liminal.SDK.VR;
 using Liminal.SDK.VR.Input;
 using UnityEngine;
 
-public class Bow : MonoBehaviour, IGrabbable
+public class Bow : MonoBehaviour
 {
     public Arrow arrowPrefab; // for instatiating the shot arrow
-    public GameObject arrowMesh; // for holding an arrow in the bow
+    public MeshRenderer arrowMesh; // for holding an arrow in the bow
     public GameObject rightHand;
     public GameObject leftHand;
 
@@ -16,13 +16,14 @@ public class Bow : MonoBehaviour, IGrabbable
     public BoxCollider bowGrabPoint;
     public Transform fullDrawPoint;
     public Transform startDrawPoint;
-    public Transform arrowSocket;
+    //public Transform arrowSocket;
 
     private Transform holdingHand;
     private Transform pullingHand;
     private GameObject currentArrow; //'Arrow' in tutorial?
     private Animator animator;
     private bool bowIsHeld = false;
+    private bool isStringHeld = false;
 
     [SerializeField]private float pullValue = 0.0f;
 
@@ -30,7 +31,8 @@ public class Bow : MonoBehaviour, IGrabbable
     // Start is called before the first frame update
     void Start()
     {
-        // rightHand.tag = "HoldingHand";
+        // put in a follow command to tell bow to follow rotation and position of holdingHand
+
         arrowGrabPoint.enabled = false;
         animator = GetComponent<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
@@ -42,6 +44,7 @@ public class Bow : MonoBehaviour, IGrabbable
         if (!pullingHand || !arrowPrefab) return;
         pullValue = CalculatePull(pullingHand);
         pullValue = Mathf.Clamp(pullValue, 0, 1);
+        UpdateBowPosition();
 
         animator.SetFloat("Blend", pullValue);
     }
@@ -82,7 +85,7 @@ public class Bow : MonoBehaviour, IGrabbable
     private void FireArrow()
     {
         arrowPrefab.Fire(pullValue);
-        arrowPrefab.enabled = false; // sould be arrowMesh?
+        arrowMesh.enabled = false;
     }
 
     private IEnumerator CreateDummyArrow(float waitTime)
@@ -90,27 +93,34 @@ public class Bow : MonoBehaviour, IGrabbable
 
         // play arrow spawn particle fx
         yield return new WaitForSeconds(waitTime);
-
+        arrowMesh.enabled = true;
+        /*
         GameObject arrowObject = Instantiate(arrowMesh, arrowSocket);
 
         arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
         arrowObject.transform.localEulerAngles = Vector3.zero;
 
         currentArrow = arrowObject.GetComponent<GameObject>();
+        */
     }
-    public void Grab()
-    {
-        if (bowIsHeld)
-        {
-            // pull();
-            // may need to set other hand as parent for arrow grab point
-            return;
-        }
+   
 
-        if (!bowIsHeld) { } // compare rightHand / leftHand and then set parent and set as holdingHand
-        // set other hand as pullingHand
-        
+    private void UpdateBowPosition()
+    {
+        if (!bowIsHeld) return;
+        transform.position = holdingHand.position;
+        if (!isStringHeld)
+        {
+            transform.rotation = holdingHand.rotation;
+            // need to set so that it rotates to the direction between the hands.
+            // is calculated in CalculatePull as well
+        }
+    }
+    public void SetHand()
+    {
+        // // compare rightHand / leftHand and then set as holdingHand
+
         arrowGrabPoint.enabled = true;
-        
+        bowGrabPoint.enabled = false;
     }
 }
