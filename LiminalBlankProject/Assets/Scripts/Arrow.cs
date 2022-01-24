@@ -5,8 +5,6 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public BoxCollider arrowCollider;
-    // Start is called before the first frame update
-
     public float moveSpeed = 2000f;
     public Transform tip;
 

@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/InteractionExamples.unity
     guid: e35aa22f0fec1b24d8f789d810f9c1fd
-  - enabled: 1
+  - enabled: 0
     path: Assets/TomsScene.unity
     guid: 4bd3930757f776b47bf0e4f026326343
   m_configObjects: {}

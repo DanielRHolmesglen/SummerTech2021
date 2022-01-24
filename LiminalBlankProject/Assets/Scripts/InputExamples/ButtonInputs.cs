@@ -11,6 +11,9 @@ public class ButtonInputs : MonoBehaviour
     public bool primaryTriggerHeld = false;
     public bool secondaryTriggerHeld = false;
 
+    public ParticleSystem triggerParticlePrimary;
+    public ParticleSystem triggerParticleSecondary;
+
     // Update is called once per frame
     void Update()
     {        
@@ -18,6 +21,9 @@ public class ButtonInputs : MonoBehaviour
         var secondaryInput = VRDevice.Device.SecondaryInputDevice;
         // may be more performant to cache in start???
         // don't know how
+        if (primaryTriggerHeld) triggerParticlePrimary.Play();
+        if (secondaryTriggerHeld) triggerParticleSecondary.Play();
+
 
         if (primaryInput.GetButtonDown(VRButton.Trigger))
         {

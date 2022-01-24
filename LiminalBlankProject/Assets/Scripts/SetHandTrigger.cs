@@ -1,26 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Liminal.SDK.VR;
+using Liminal.SDK.VR.Input;
 
 public class SetHandTrigger : MonoBehaviour
 {
     public GameObject rightHand;  //PrimaryHand
     public GameObject leftHand; // SecondaryHand
-    public Transform bowGrabPoint;
-    ButtonInputs input;
+    public IVRInputDevice primaryInput, secondaryInput;
     Bow bow;
 
-    private float grabDistance = 0.15f;
-
-    private Collider bowCollider;
 
     private void Start()
     {
-        bowCollider = GetComponent<Collider>();
+        //bowCollider = GetComponent<Collider>();
+        primaryInput = VRDevice.Device.PrimaryInputDevice;
+        secondaryInput = VRDevice.Device.SecondaryInputDevice;
     }
-
+    /*
     private void Update()
     {
+
         if (bow.bowIsHeld == false)
         {
             float rightDistance = Vector3.Distance(rightHand.transform.position, bowGrabPoint.transform.position);
@@ -35,13 +36,25 @@ public class SetHandTrigger : MonoBehaviour
             } if (rightDistance > grabDistance || leftDistance > grabDistance) return;
         } return;
     }
-
+    */
 
     private void OnTriggerEnter(Collider other)
     {
-        // if rightHand collider enters and  right VR trigger is pulled 
-        // set bow hand as righthand
-        // else if lefthand collider enters and left VR trigger is pulled
-        // set left as bow hand
+        if (other.gameObject == rightHand && primaryInput.GetButton(VRButton.Trigger))
+        {
+            if (!bow.bowIsHeld)
+            {
+                bow.SetRightHand();
+                
+            }
+        }
+        if (other.gameObject == leftHand && secondaryInput.GetButton(VRButton.Trigger))
+        {
+            if (!bow.bowIsHeld)
+            {
+                bow.SetLeftHand();
+
+            }
+        }return;
     }
 }
