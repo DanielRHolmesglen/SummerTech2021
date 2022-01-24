@@ -4947,6 +4947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8353172138921327474}
   - component: {fileID: 72021578016132557}
+  - component: {fileID: 1024449396828233868}
   m_Layer: 0
   m_Name: BowGrabPoint
   m_TagString: Untagged
@@ -4976,11 +4977,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5375155879872083952}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1024449396828233868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375155879872083952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06577aa55711f284999fcc4e9a328c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
 --- !u!1 &5718521306480398531
 GameObject:
   m_ObjectHideFlags: 0
@@ -5051,7 +5066,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500679799192637250}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3, z: 0.3}
@@ -5099,7 +5114,6 @@ GameObject:
   - component: {fileID: 2184250354899285390}
   - component: {fileID: 7741949357624463882}
   - component: {fileID: 2113510661}
-  - component: {fileID: 1943873634}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -5143,6 +5157,7 @@ MonoBehaviour:
   arrowMesh: {fileID: 3301705594776015205}
   rightHand: {fileID: 0}
   leftHand: {fileID: 0}
+  input: {fileID: 0}
   grabThreshold: 0.15
   arrowGrabPoint: {fileID: 8530623910207905572}
   bowGrabPoint: {fileID: 72021578016132557}
@@ -5168,18 +5183,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1943873634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9074617112382092412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3fcc9dddfa72804daef596fa76688b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1024449396402420140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5277,6 +5280,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5854968102729274337}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a79d0baced0fe5c459c21d78696fb4db,
+        type: 3}
+      propertyPath: m_Name
+      value: AlphaBowArrowMesh
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a79d0baced0fe5c459c21d78696fb4db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5331,11 +5339,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a79d0baced0fe5c459c21d78696fb4db,
-        type: 3}
-      propertyPath: m_Name
-      value: AlphaBowArrowMesh
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: a79d0baced0fe5c459c21d78696fb4db,
         type: 3}

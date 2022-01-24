@@ -5,29 +5,37 @@ using Liminal.SDK.VR;
 using Liminal.SDK.VR.Input;
 public class ButtonInputs : MonoBehaviour
 {
-    [SerializeField] ParticleSystem particles;
-    [SerializeField] TrailRenderer trails;
- 
+    //public GameObject primaryInput;
+    //public GameObject secondaryInput;
+
+    public bool primaryTriggerHeld = false;
+    public bool secondaryTriggerHeld = false;
+
     // Update is called once per frame
     void Update()
-    {
-        //get the primary input
+    {        
         var primaryInput = VRDevice.Device.PrimaryInputDevice;
+        var secondaryInput = VRDevice.Device.SecondaryInputDevice;
+        // may be more performant to cache in start???
+        // don't know how
 
-        if (primaryInput.GetButtonDown(VRButton.Trigger) || Input.GetMouseButtonDown(0))
+        if (primaryInput.GetButtonDown(VRButton.Trigger))
         {
-            particles.Play();
-            trails.emitting = true;
+            primaryTriggerHeld = true;
         }
-        if (primaryInput.GetButtonUp(VRButton.Trigger) || Input.GetMouseButtonUp(0))
+        if (primaryInput.GetButtonUp(VRButton.Trigger))
         {
-            particles.Play();
-            trails.emitting = false;
+            primaryTriggerHeld = false;
         }
-        if (primaryInput.GetButton(VRButton.Trigger) || Input.GetMouseButton(0))
+        if (secondaryInput.GetButtonDown(VRButton.Trigger))
         {
+            secondaryTriggerHeld = true;
+        }
+        if (secondaryInput.GetButtonUp(VRButton.Trigger))
+        {
+            secondaryTriggerHeld = false;
+        }
 
-        }
     }
 }
 

@@ -8,8 +8,9 @@ public class Bow : MonoBehaviour
 {
     public Arrow arrowPrefab; // for instatiating the shot arrow
     public MeshRenderer arrowMesh; // for holding an arrow in the bow
-    public GameObject rightHand;
-    public GameObject leftHand;
+    public GameObject rightHand;  //PrimaryHand
+    public GameObject leftHand; // SecondaryHand
+    public ButtonInputs input;
 
     public float grabThreshold = 0.15f;
     public BoxCollider arrowGrabPoint;
@@ -18,12 +19,16 @@ public class Bow : MonoBehaviour
     public Transform startDrawPoint;
     //public Transform arrowSocket;
 
-    private Transform holdingHand;
-    private Transform pullingHand;
+    private MeshRenderer rightHandMesh;
+    private MeshRenderer leftHandMesh;
+    private GameObject holdingHand;
+    private GameObject pullingHand;
     private GameObject currentArrow; //'Arrow' in tutorial?
     private Animator animator;
-    private bool bowIsHeld = false;
+    public bool bowIsHeld = false;
     private bool isStringHeld = false;
+    //private bool rigthHandInRange = false;
+    //private bool leftHandInRange = false;
 
     [SerializeField]private float pullValue = 0.0f;
 
@@ -32,7 +37,8 @@ public class Bow : MonoBehaviour
     void Start()
     {
         // put in a follow command to tell bow to follow rotation and position of holdingHand
-
+        rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
+        leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
         arrowGrabPoint.enabled = false;
         animator = GetComponent<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
@@ -42,9 +48,11 @@ public class Bow : MonoBehaviour
     void Update()
     {
         if (!pullingHand || !arrowPrefab) return;
-        pullValue = CalculatePull(pullingHand);
-        pullValue = Mathf.Clamp(pullValue, 0, 1);
-        UpdateBowPosition();
+        pullValue = CalculatePull(pullingHand.transform);
+        pullValue = Mathf.Clamp(pullValue, 0f, 1f);
+
+        if (!bowIsHeld) return;
+        else UpdateBowPosition();
 
         animator.SetFloat("Blend", pullValue);
     }
@@ -61,9 +69,9 @@ public class Bow : MonoBehaviour
     }
 
     
-    public void Pull(Transform hand) // assign pullHand
+    public void Pull(GameObject hand) // assign pullHand
     {
-        float distance = Vector3.Distance(hand.position, startDrawPoint.position);
+        float distance = Vector3.Distance(hand.transform.position, startDrawPoint.position);
 
         if (distance > grabThreshold) return;
 
@@ -96,30 +104,51 @@ public class Bow : MonoBehaviour
         arrowMesh.enabled = true;
         /*
         GameObject arrowObject = Instantiate(arrowMesh, arrowSocket);
-
         arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
         arrowObject.transform.localEulerAngles = Vector3.zero;
-
         currentArrow = arrowObject.GetComponent<GameObject>();
         */
     }
-   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == rightHand && input.primaryTriggerHeld)
+        {
+            if (!bowIsHeld)
+            {
+                rightHand = holdingHand;
+                leftHand = pullingHand;
+                arrowGrabPoint.enabled = true;
+                bowGrabPoint.enabled = false;
+            }
+            Pull(pullingHand);
+        }
+        if (other.gameObject == leftHand && input.secondaryTriggerHeld)
+        {
+            if (!bowIsHeld)
+            {
+                leftHand = holdingHand;
+                rightHand = pullingHand;
+                arrowGrabPoint.enabled = true;
+                bowGrabPoint.enabled = false;
+            }
+            Pull(pullingHand);
+        }
+    }
+
 
     private void UpdateBowPosition()
     {
-        if (!bowIsHeld) return;
-        transform.position = holdingHand.position;
+        transform.position = holdingHand.transform.position;
         if (!isStringHeld)
         {
-            transform.rotation = holdingHand.rotation;
+            transform.rotation = holdingHand.transform.rotation;
             // need to set so that it rotates to the direction between the hands.
-            // is calculated in CalculatePull as well
+            // is calculated in CalculatePull as well ?
         }
     }
-    public void SetHand()
+    public void SetHand(Transform activeHand)
     {
-        // // compare rightHand / leftHand and then set as holdingHand
-
         arrowGrabPoint.enabled = true;
         bowGrabPoint.enabled = false;
     }

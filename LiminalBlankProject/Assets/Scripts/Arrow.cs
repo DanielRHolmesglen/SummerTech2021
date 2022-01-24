@@ -13,10 +13,12 @@ public class Arrow : MonoBehaviour
     private Rigidbody rb;
     private bool isStopped = true;
     private Vector3 lastPosition = Vector3.zero;
+    private MeshRenderer arrowMesh;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        arrowMesh = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -34,12 +36,10 @@ public class Arrow : MonoBehaviour
         lastPosition = tip.position;
     }
 
-    private void Hit() // turn into destroy and particle fx
+    private void Hit() 
     {
-        isStopped = true;
-
-        rb.isKinematic = true;
-        rb.useGravity = false;
+        // arrow hit particle
+        arrowMesh.enabled = false;
     }
 
     public void Fire(float pullValue)
