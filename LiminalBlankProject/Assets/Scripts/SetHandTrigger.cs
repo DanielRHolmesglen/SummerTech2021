@@ -9,7 +9,8 @@ public class SetHandTrigger : MonoBehaviour
     public GameObject rightHand;  //PrimaryHand
     public GameObject leftHand; // SecondaryHand
     public IVRInputDevice primaryInput, secondaryInput;
-    Bow bow;
+    public Bow bow;
+    
 
 
     private void Start()
@@ -42,19 +43,14 @@ public class SetHandTrigger : MonoBehaviour
     {
         if (other.gameObject == rightHand && primaryInput.GetButton(VRButton.Trigger))
         {
-            if (!bow.bowIsHeld)
-            {
-                bow.SetRightHand();
-                
-            }
+            bow.SetRightHand();
+
         }
         if (other.gameObject == leftHand && secondaryInput.GetButton(VRButton.Trigger))
         {
-            if (!bow.bowIsHeld)
-            {
-                bow.SetLeftHand();
+            bow.SetLeftHand();
 
-            }
-        }return;
+        }
+        return;
     }
 }

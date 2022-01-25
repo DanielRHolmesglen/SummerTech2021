@@ -377,6 +377,11 @@ PrefabInstance:
       propertyPath: m_HoverDuration
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1260162970045296578, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1260162968871696497, guid: 22276a8657744e04cba8ad0a2caf4195,
         type: 3}
       propertyPath: m_Events.m_OnAnchored.m_PersistentCalls.m_Calls.Array.size
@@ -856,6 +861,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2184250354899285390, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184250354899285390, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184250354899285390, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 72021578016132557, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
         type: 3}
       propertyPath: m_IsTrigger
@@ -899,6 +919,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHand: {fileID: 1910735099}
   leftHand: {fileID: 1105417591}
+  bow: {fileID: 1986475799}
+--- !u!114 &1986475799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7741949357624463882, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986475796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b098b00605b774e9731a300a4f719f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1996041149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,5 +1104,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryTriggerHeld: 0
   secondaryTriggerHeld: 0
-  triggerParticlePrimary: {fileID: 0}
-  triggerParticleSecondary: {fileID: 0}
+  leftHandMesh: {fileID: 1999634549}
+  rightHandMesh: {fileID: 315602162}

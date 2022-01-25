@@ -50,29 +50,26 @@ public class Bow : MonoBehaviour
         primaryInput = VRDevice.Device.PrimaryInputDevice;
         secondaryInput = VRDevice.Device.SecondaryInputDevice;
 
-        if (!bowIsHeld) return;
-        else 
+        if (bowIsHeld)
         {
             UpdateBowPosition();
-            if (!isStringHeld)
-            {
-                Pull(pullingHand);
-            } else if (isStringHeld)
+            if (isStringHeld)
             {
                 pullValue = CalculatePull(pullingHand.transform);
                 pullValue = Mathf.Clamp(pullValue, 0f, 1f);
 
                 animator.SetFloat("Blend", pullValue);
+
                 if (primaryInput.GetButtonUp(VRButton.Trigger) || secondaryInput.GetButtonUp(VRButton.Trigger))
                 {
                     isStringHeld = false;
                     Release();
                 }
-            }
-        }
+            } else ReadyPull(pullingHand);
+        } else return;
     }
 
-    private float CalculatePull(Transform pullHand) // may need to manually assign pullHand
+    private float CalculatePull(Transform pullHand) 
     {
         Vector3 direction = fullDrawPoint.position - startDrawPoint.position;
         float magnitude = direction.magnitude;
@@ -84,7 +81,7 @@ public class Bow : MonoBehaviour
     }
 
     
-    public void Pull(GameObject hand) // assign pullHand
+    public void ReadyPull(GameObject hand) // assign pullHand
     {
         float distance = Vector3.Distance(hand.transform.position, startDrawPoint.position);
         
@@ -100,7 +97,7 @@ public class Bow : MonoBehaviour
         
     }
 
-    public void Release() // nothing calls release 
+    public void Release()  
     {
         if (pullValue > 0.25f) FireArrow();
         // play release soundfx
@@ -172,7 +169,7 @@ public class Bow : MonoBehaviour
             transform.rotation = holdingHand.transform.rotation;
             // need to set so that it rotates to the direction between the hands.
             // is calculated in CalculatePull as well ?
-        }
+        } else transform.rotation = holdingHand.transform.rotation;
     }
     public void SetRightHand()
     {
