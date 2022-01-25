@@ -24,8 +24,10 @@ public class ButtonInputs : MonoBehaviour
         // may be more performant to cache in start???
         // don't know how
         if (primaryTriggerHeld) rightHandMesh.material.SetColor("_Color", Color.green);
+        else rightHandMesh.material.SetColor("_Color", Color.grey);
         if (secondaryTriggerHeld) leftHandMesh.material.SetColor("_Color", Color.green);
-
+        else leftHandMesh.material.SetColor("_Color", Color.grey);
+        
 
         if (primaryInput.GetButtonDown(VRButton.Trigger))
         {

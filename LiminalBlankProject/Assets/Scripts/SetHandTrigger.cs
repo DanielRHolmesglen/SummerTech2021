@@ -16,13 +16,15 @@ public class SetHandTrigger : MonoBehaviour
     private void Start()
     {
         //bowCollider = GetComponent<Collider>();
-        primaryInput = VRDevice.Device.PrimaryInputDevice;
-        secondaryInput = VRDevice.Device.SecondaryInputDevice;
+        //primaryInput = VRDevice.Device.PrimaryInputDevice;
+        //secondaryInput = VRDevice.Device.SecondaryInputDevice;
     }
-    /*
+    
     private void Update()
     {
-
+        primaryInput = VRDevice.Device.PrimaryInputDevice;
+        secondaryInput = VRDevice.Device.SecondaryInputDevice;
+        /*
         if (bow.bowIsHeld == false)
         {
             float rightDistance = Vector3.Distance(rightHand.transform.position, bowGrabPoint.transform.position);
@@ -36,19 +38,20 @@ public class SetHandTrigger : MonoBehaviour
                 bow.SetHand(leftHand.transform);
             } if (rightDistance > grabDistance || leftDistance > grabDistance) return;
         } return;
+        */
     }
-    */
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == rightHand && primaryInput.GetButton(VRButton.Trigger))
         {
-            bow.SetRightHand();
+            //bow.SetRightHand();
 
         }
         if (other.gameObject == leftHand && secondaryInput.GetButton(VRButton.Trigger))
         {
-            bow.SetLeftHand();
+            //bow.SetLeftHand();
 
         }
         return;
