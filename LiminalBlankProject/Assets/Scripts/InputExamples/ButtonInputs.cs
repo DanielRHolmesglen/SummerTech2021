@@ -11,18 +11,20 @@ public class ButtonInputs : MonoBehaviour
     public bool primaryTriggerHeld = false;
     public bool secondaryTriggerHeld = false;
 
-    public ParticleSystem triggerParticlePrimary;
-    public ParticleSystem triggerParticleSecondary;
+    public IVRInputDevice primaryInput, secondaryInput;
+
+    public MeshRenderer leftHandMesh;
+    public MeshRenderer rightHandMesh;
 
     // Update is called once per frame
     void Update()
     {        
-        var primaryInput = VRDevice.Device.PrimaryInputDevice;
-        var secondaryInput = VRDevice.Device.SecondaryInputDevice;
+        primaryInput = VRDevice.Device.PrimaryInputDevice;
+        secondaryInput = VRDevice.Device.SecondaryInputDevice;
         // may be more performant to cache in start???
         // don't know how
-        if (primaryTriggerHeld) triggerParticlePrimary.Play();
-        if (secondaryTriggerHeld) triggerParticleSecondary.Play();
+        if (primaryTriggerHeld) rightHandMesh.material.SetColor("_Color", Color.green);
+        if (secondaryTriggerHeld) leftHandMesh.material.SetColor("_Color", Color.green);
 
 
         if (primaryInput.GetButtonDown(VRButton.Trigger))
