@@ -139,7 +139,7 @@ public class Bow : MonoBehaviour
     }
     // trigger update now in SetHandTrigger class
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay (Collider other) //OnTriggerEnter wasn't working either
     {
         if (other.gameObject) burstParticle.Play();
 
