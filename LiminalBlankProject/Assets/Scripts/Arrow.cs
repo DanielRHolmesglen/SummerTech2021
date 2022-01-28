@@ -42,6 +42,7 @@ public class Arrow : MonoBehaviour
 
     public void Fire(float pullValue)
     {
+        arrowCollider.enabled = true;
         isStopped = false;
         transform.parent = null;
 

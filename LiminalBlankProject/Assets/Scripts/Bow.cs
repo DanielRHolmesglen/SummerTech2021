@@ -10,6 +10,7 @@ public class Bow : MonoBehaviour
     public MeshRenderer arrowMesh; // for holding an arrow in the bow
     public GameObject rightHand;  //PrimaryHand
     public GameObject leftHand; // SecondaryHand
+    //public MeshRenderer bowMesh;
     //public IVRInputDevice primaryInput, secondaryInput;
 
     public float grabThreshold = 0.15f;
@@ -19,6 +20,8 @@ public class Bow : MonoBehaviour
     public Transform startDrawPoint;
     public bool bowIsHeld = false;
     public ParticleSystem burstParticle;
+    //public Vector3 arrowSocket;
+
 
     private ButtonInputs inputs;
     private GameObject holdingHand;
@@ -35,11 +38,14 @@ public class Bow : MonoBehaviour
 
     [SerializeField]private float pullValue = 0.0f;
 
-    
+    private void Awake()
+    {
+        Debug.Log("Bow Awake");
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Bow Start");
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
         //arrowGrabPoint.enabled = false;
@@ -53,8 +59,8 @@ public class Bow : MonoBehaviour
     {
         //primaryInput = VRDevice.Device.PrimaryInputDevice;
         //secondaryInput = VRDevice.Device.SecondaryInputDevice;
+        Debug.Log("Bow Update");
 
-        
         if (bowIsHeld)
         {
             UpdateBowPosition();
@@ -102,8 +108,6 @@ public class Bow : MonoBehaviour
                 isStringHeld = true;
             }
         } else { return; }
-        
-        
     }
 
     public void Release()  
@@ -130,15 +134,17 @@ public class Bow : MonoBehaviour
         // play arrow spawn particle fx
         yield return new WaitForSeconds(waitTime);
         arrowMesh.enabled = true;
+
+        
         /*
-        GameObject arrowObject = Instantiate(arrowMesh, arrowSocket);
+        GameObject arrowObject = Instantiate(arrowPrefab);
         arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
         arrowObject.transform.localEulerAngles = Vector3.zero;
         currentArrow = arrowObject.GetComponent<GameObject>();
         */
     }
     // trigger update now in SetHandTrigger class
-    
+    /*
     private void OnTriggerStay (Collider other) //OnTriggerEnter wasn't working either
     {
         if (other.gameObject) burstParticle.Play();
@@ -163,7 +169,7 @@ public class Bow : MonoBehaviour
             leftHandMesh.enabled = false;
         }
     }
-    
+    */
 
     private void UpdateBowPosition()
     {
@@ -175,7 +181,7 @@ public class Bow : MonoBehaviour
             // is calculated in CalculatePull as well ?
         } else transform.rotation = holdingHand.transform.rotation;
     }
-    /*
+    
     public void SetRightHand()
     {
         rightHand = holdingHand;
@@ -194,5 +200,5 @@ public class Bow : MonoBehaviour
         bowGrabPoint.enabled = false;
         leftHandMesh.enabled = false;
     }
-    */
+    
 }

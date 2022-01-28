@@ -10,12 +10,24 @@ public class SetHandTrigger : MonoBehaviour
     public GameObject leftHand; // SecondaryHand
     public IVRInputDevice primaryInput, secondaryInput;
     public Bow bow;
-    
+    public GameObject bowGrabPoint;
+    public MeshRenderer bowMesh;
 
+    private BoxCollider bowCollider;
+    private ButtonInputs triggerInputs;
+
+    private float grabDistance = 0.15f;
+
+    private void Awake()
+    {
+        //Debug.Log("SetHandTrigger Awake");
+    }
 
     private void Start()
     {
-        //bowCollider = GetComponent<Collider>();
+        //Debug.Log("SetHandTrigger Start");
+        bowMesh.material.SetColor("_Color", Color.cyan);
+        bowCollider = GetComponentInChildren<BoxCollider>();
         //primaryInput = VRDevice.Device.PrimaryInputDevice;
         //secondaryInput = VRDevice.Device.SecondaryInputDevice;
     }
@@ -24,36 +36,60 @@ public class SetHandTrigger : MonoBehaviour
     {
         primaryInput = VRDevice.Device.PrimaryInputDevice;
         secondaryInput = VRDevice.Device.SecondaryInputDevice;
-        /*
+        //Debug.Log("SetHandTrigger Update");
+
         if (bow.bowIsHeld == false)
         {
             float rightDistance = Vector3.Distance(rightHand.transform.position, bowGrabPoint.transform.position);
             float leftDistance = Vector3.Distance(leftHand.transform.position, bowGrabPoint.transform.position);
 
-            if (rightDistance < grabDistance && input.primaryTriggerHeld)
+            if (rightDistance < grabDistance)
             {
-                bow.SetHand(rightHand.transform);
-            } else if (leftDistance < grabDistance && input.secondaryTriggerHeld)
+                bowMesh.material.SetColor("_Color", Color.blue);
+                if (primaryInput.GetButton(VRButton.Trigger))
+                {
+                    bow.SetRightHand();
+                }
+
+            } else if (leftDistance < grabDistance)
             {
-                bow.SetHand(leftHand.transform);
-            } if (rightDistance > grabDistance || leftDistance > grabDistance) return;
-        } return;
-        */
+                bowMesh.material.SetColor("_Color", Color.red);
+                if (secondaryInput.GetButton(VRButton.Trigger))
+                {
+                    bow.SetLeftHand();
+                }
+
+            }
+            if (rightDistance > grabDistance || leftDistance > grabDistance)
+            {
+                bowMesh.material.SetColor("_Color", Color.cyan);
+                return;
+            }
+        } else return;
+        
     }
-    
+    /*
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == rightHand && primaryInput.GetButton(VRButton.Trigger))
+        if (other.gameObject == rightHand)
         {
-            //bow.SetRightHand();
-
+            bowMesh.material.SetColor("_Color", Color.blue);
+            //add fx here for grab
+            if (primaryInput.GetButton(VRButton.Trigger))
+            {
+                bow.SetRightHand();
+            }
         }
-        if (other.gameObject == leftHand && secondaryInput.GetButton(VRButton.Trigger))
+        if (other.gameObject == leftHand)
         {
-            //bow.SetLeftHand();
-
+            bowMesh.material.SetColor("_Color", Color.red);
+            //add fx here for grab
+            if (secondaryInput.GetButton(VRButton.Trigger))
+            {
+                bow.SetLeftHand();
+            }
         }
         return;
-    }
+    }*/
 }
