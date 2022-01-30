@@ -7,8 +7,11 @@ public class TeleportNode : MonoBehaviour
     public static int playerScore;
     public GameObject timerTxt;
     public GameObject player;
+    public GameObject playerHead;
+    // public Transform playerPos;
     public GameObject enemyType;
     public GameObject nextNode;
+   // public Transform playerTeleportLocation;
     public List<GameObject> spawnPositions;
     public int numberOfEnemiesToSpawn;
     public int enemiesSpawned;
@@ -20,6 +23,7 @@ public class TeleportNode : MonoBehaviour
 
     private void Start()
     {
+
         timerTxt.SetActive(false);
         nextNode.SetActive(false);
         startStage = false;
@@ -51,20 +55,26 @@ public class TeleportNode : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            timerTxt.SetActive(true);
-            startStage = true;
-            readyToSpawn = true;
+            timerTxt.SetActive(true);           
+            StageTimer.timerOn = true;
+            Invoke("TimerForFirstSpawn", 4.0f);
 
             Debug.Log("PLayerHit");
         }
+
+       // if (other.gameObject.tag == "Arrow")
+       // {
+       //     playerPos.position = playerTeleportLocation.position;
+       // }
+
     }
 
     public IEnumerator SendHoming(GameObject enemy)
     {
-        while (Vector3.Distance(player.transform.position, enemy.transform.position) > 0.3)
+        while (Vector3.Distance(playerHead.transform.position, enemy.transform.position) > 0.3)
         {
-            enemy.transform.position += (player.transform.position - enemy.transform.position).normalized * speedOfEnemies * Time.deltaTime;
-            enemy.transform.LookAt(player.transform);
+            enemy.transform.position += (playerHead.transform.position - enemy.transform.position).normalized * speedOfEnemies * Time.deltaTime;
+            enemy.transform.LookAt(playerHead.transform);
             yield return null;
         }
     }
@@ -72,13 +82,20 @@ public class TeleportNode : MonoBehaviour
     void EnemySpawn()
     {
         GameObject enemy = Instantiate(enemyType, spawnPositions[Random.Range(0, 6)].transform.position, enemyType.transform.rotation);
-        enemy.transform.LookAt(player.transform);
+        enemy.transform.LookAt(playerHead.transform);
         StartCoroutine(SendHoming(enemy));
        
         readyToSpawn = false;
         enemiesSpawned++;
         Invoke("SpawnEnemy", enemySpawnTimer);
         
+    }
+
+    void TimerForFirstSpawn()
+    {
+        timerTxt.SetActive(false);
+        startStage = true;
+        readyToSpawn = true;
     }
 
     void SpawnEnemy()

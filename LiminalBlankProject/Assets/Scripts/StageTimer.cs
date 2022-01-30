@@ -12,7 +12,7 @@ public class StageTimer : MonoBehaviour
 
     private void Start()
     {
-        currentTime = 0f;
+        currentTime = startingTime;
     }
 
     private void Update()
@@ -21,6 +21,12 @@ public class StageTimer : MonoBehaviour
         {
             StartTimer();
         }
+
+        if (timerOn == false)
+        {
+            currentTime = startingTime;
+        }
+
     }
 
     void StartTimer()
@@ -30,15 +36,10 @@ public class StageTimer : MonoBehaviour
 
         if (currentTime <= 0)
         {
+            countdownDisplay.text = "GO!";
             timerOn = false;
-            currentTime = startingTime;
             gameObject.SetActive(false);
         }
-
-        //if (currentTime <= 0.5)
-       // {
-       //     countdownDisplay.text = "GO!";
-       // }
 
     }
 
