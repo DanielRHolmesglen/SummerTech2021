@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &315602160
 Transform:
   m_ObjectHideFlags: 0
@@ -551,6 +551,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!4 &1396180331 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2184250354899285390, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986475796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1702082489 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7289824036344861817, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986475796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1799338168
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +889,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2184250354899285390, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184250354899285390, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184250354899285390, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7741949357624463882, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
         type: 3}
       propertyPath: rightHand
@@ -887,6 +914,11 @@ PrefabInstance:
       propertyPath: leftHand
       value: 
       objectReference: {fileID: 1105417591}
+    - target: {fileID: 7741949357624463882, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
+        type: 3}
+      propertyPath: bowMesh
+      value: 
+      objectReference: {fileID: 1702082489}
     - target: {fileID: 733725771, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc, type: 3}
       propertyPath: rightHand
       value: 
@@ -895,44 +927,8 @@ PrefabInstance:
       propertyPath: leftHand
       value: 
       objectReference: {fileID: 1105417591}
-    - target: {fileID: 2276901146224988944, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.347
-      objectReference: {fileID: 0}
-    - target: {fileID: 2276901146224988944, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5854968102729274337, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5854968102729274337, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.518
-      objectReference: {fileID: 0}
-    - target: {fileID: 267274142268495786, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 267274142268495786, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc, type: 3}
---- !u!4 &1986475797 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2184250354899285390, guid: 1ee6d0cadd6b2c24c8b51937afedc4dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1986475796}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1996041149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +997,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1986475797}
+  - {fileID: 1396180331}
   - {fileID: 1019754716}
   - {fileID: 1905047006}
   - {fileID: 96426858}
@@ -1025,7 +1021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1999634547
 Transform:
   m_ObjectHideFlags: 0
