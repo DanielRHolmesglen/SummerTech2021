@@ -10,6 +10,12 @@ public class Bow : MonoBehaviour
     public MeshRenderer arrowMesh; // for holding an arrow in the bow
     public GameObject rightHand;  //PrimaryHand
     public GameObject leftHand; // SecondaryHand
+
+    public GameObject testArrow;
+    public float moveSpeed = 2000f;
+    private Rigidbody testArrowRB;
+    public Transform arrowSpawnPoint;
+
     //public MeshRenderer bowMesh;
     public IVRInputDevice primaryInput, secondaryInput;
 
@@ -20,7 +26,7 @@ public class Bow : MonoBehaviour
     public Transform startDrawPoint;
     public bool bowIsHeld = false;
     public ParticleSystem burstParticle;
-    //public Vector3 arrowSocket;
+    public Vector3 arrowSocket;
 
 
     //private ButtonInputs inputs;
@@ -47,8 +53,10 @@ public class Bow : MonoBehaviour
     void Start()
     {
         Debug.Log("Bow Start");
+
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
+        testArrowRB = testArrow.GetComponent<Rigidbody>();
         //arrowGrabPoint.enabled = false;
         animator = GetComponent<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
@@ -72,6 +80,7 @@ public class Bow : MonoBehaviour
                 pullValue = CalculatePull(pullingHand.transform);
                 pullValue = Mathf.Clamp(pullValue, 0f, 1f);
 
+
                 animator.SetFloat("Blend", pullValue);
 
                 if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) == false || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger) == false)
@@ -90,6 +99,8 @@ public class Bow : MonoBehaviour
     {
         Vector3 direction = fullDrawPoint.position - startDrawPoint.position;
         float magnitude = direction.magnitude;
+
+        // need to make the arrow pull back here
 
         direction.Normalize();
         Vector3 difference = pullHand.position - startDrawPoint.position;
@@ -118,7 +129,7 @@ public class Bow : MonoBehaviour
 
     public void Release()  
     {
-        if (pullValue > 0.25f) FireArrow();
+        if (pullValue > 0.25f) FireTestArrow(pullValue);
         // play release soundfx
         //pullingHand = null; // ???
 
@@ -149,44 +160,18 @@ public class Bow : MonoBehaviour
         currentArrow = arrowObject.GetComponent<GameObject>();
         */
     }
-    // trigger update now in SetHandTrigger class
-    /*
-    private void OnTriggerStay (Collider other) //OnTriggerEnter wasn't working either
-    {
-        if (other.gameObject) burstParticle.Play();
-
-        if(other.gameObject == rightHand && inputs.primaryTriggerHeld) //primaryInput.GetButton(VRButton.Trigger)
-        {
-            rightHand = holdingHand;
-            leftHand = pullingHand;
-            bowIsHeld = true;
-            //arrowGrabPoint.enabled = true;
-            bowGrabPoint.enabled = false;
-            rightHandMesh.enabled = false;
-
-        }
-        if (other.gameObject == leftHand && inputs.secondaryTriggerHeld) //secondaryInput.GetButton(VRButton.Trigger)
-        {
-            leftHand = holdingHand;
-            rightHand = pullingHand;
-            bowIsHeld = true;
-            //arrowGrabPoint.enabled = true;
-            bowGrabPoint.enabled = false;
-            leftHandMesh.enabled = false;
-        }
-    }
-    */
+   
 
     private void UpdateBowPosition()
     {
         transform.position = holdingHand.transform.position;
         if (isStringHeld)
         {
-            //Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
-            //transform.rotation = Quaternion.LookRotation(aimDirection);
-            
-            Vector3 aimDirection = new Vector3(pullingHand.transform.position.x, pullingHand.transform.position.y, holdingHand.transform.position.z);
+            Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
             transform.rotation = Quaternion.LookRotation(aimDirection);
+
+            //Vector3 aimDirection = new Vector3(pullingHand.transform.position.x, pullingHand.transform.position.y, holdingHand.transform.position.z);
+            //transform.rotation = Quaternion.Euler(aimDirection);
 
         } else transform.rotation = holdingHand.transform.rotation;
     }
@@ -216,5 +201,13 @@ public class Bow : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(startDrawPoint.position, grabThreshold);
+    }
+    private void FireTestArrow(float pullValue)
+    {
+        GameObject.Instantiate<GameObject>(testArrow, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+        //shot.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
+        testArrowRB.AddForce(transform.forward * (pullValue * moveSpeed));
+
+        Destroy(gameObject, 2.5f);
     }
 }
