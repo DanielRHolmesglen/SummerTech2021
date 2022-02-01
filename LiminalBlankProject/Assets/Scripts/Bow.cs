@@ -168,7 +168,8 @@ public class Bow : MonoBehaviour
         if (isStringHeld)
         {
             Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
-            transform.rotation = Quaternion.LookRotation(aimDirection);
+            Vector3 handAngle = new Vector3(0,0,holdingHand.transform.rotation.z);
+            transform.rotation = Quaternion.LookRotation(aimDirection,handAngle);
 
             //Vector3 aimDirection = new Vector3(pullingHand.transform.position.x, pullingHand.transform.position.y, holdingHand.transform.position.z);
             //transform.rotation = Quaternion.Euler(aimDirection);
@@ -204,10 +205,10 @@ public class Bow : MonoBehaviour
     }
     private void FireTestArrow(float pullValue)
     {
-        GameObject.Instantiate<GameObject>(testArrow, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+        GameObject arrow = Instantiate<GameObject>(testArrow, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
         //shot.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
         testArrowRB.AddForce(transform.forward * (pullValue * moveSpeed));
 
-        Destroy(gameObject, 2.5f);
+        Destroy(arrow, 2.5f);
     }
 }
