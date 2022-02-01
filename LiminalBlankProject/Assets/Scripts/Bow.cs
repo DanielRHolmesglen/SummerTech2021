@@ -10,8 +10,8 @@ public class Bow : MonoBehaviour
     public MeshRenderer arrowMesh; // for holding an arrow in the bow
     public GameObject rightHand;  //PrimaryHand
     public GameObject leftHand; // SecondaryHand
-    //public MeshRenderer bowMesh;
-    //public IVRInputDevice primaryInput, secondaryInput;
+    public MeshRenderer bowMesh;
+    public IVRInputDevice primaryInput, secondaryInput;
 
     public float grabThreshold = 0.15f;
     //public BoxCollider arrowGrabPoint;
@@ -38,10 +38,8 @@ public class Bow : MonoBehaviour
 
     [SerializeField]private float pullValue = 0.0f;
 
-    private void Awake()
-    {
-        Debug.Log("Bow Awake");
-    }
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -57,8 +55,8 @@ public class Bow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //primaryInput = VRDevice.Device.PrimaryInputDevice;
-        //secondaryInput = VRDevice.Device.SecondaryInputDevice;
+        primaryInput = VRDevice.Device.PrimaryInputDevice;
+        secondaryInput = VRDevice.Device.SecondaryInputDevice;
         Debug.Log("Bow Update");
 
         if (bowIsHeld)
@@ -71,10 +69,11 @@ public class Bow : MonoBehaviour
 
                 animator.SetFloat("Blend", pullValue);
 
-                if (inputs.primaryTriggerHeld == false || inputs.secondaryTriggerHeld == false)
-                    //(primaryInput.GetButtonUp(VRButton.Trigger) || secondaryInput.GetButtonUp(VRButton.Trigger))
-                    // add in check for if left or right hand is pullingHand
+                if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) == false || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger) == false)
+                //(primaryInput.GetButtonUp(VRButton.Trigger) || secondaryInput.GetButtonUp(VRButton.Trigger))
+                // add in check for if left or right hand is pullingHand
                 {
+                    bowMesh.material.SetColor("_Color", Color.cyan);
                     isStringHeld = false;
                     Release();
                 }
@@ -91,6 +90,7 @@ public class Bow : MonoBehaviour
         Vector3 difference = pullHand.position - startDrawPoint.position;
 
         return Vector3.Dot(difference, direction) / magnitude;
+        // add in a compounding sound effect here depending on pull amount
     }
 
     
@@ -100,11 +100,13 @@ public class Bow : MonoBehaviour
         
         if(distance < grabThreshold)
         {
+            bowMesh.material.SetColor("_Color", Color.green);
             //play grab string particle FX
-            if (inputs.primaryTriggerHeld || inputs.secondaryTriggerHeld)
+            if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger))
                 //(primaryInput.GetButtonDown(VRButton.Trigger)|| secondaryInput.GetButtonDown(VRButton.Trigger))
                 // add check for left or right hand.
             {
+                bowMesh.material.SetColor("_Color", Color.yellow);
                 isStringHeld = true;
             }
         } else { return; }
@@ -176,16 +178,16 @@ public class Bow : MonoBehaviour
         transform.position = holdingHand.transform.position;
         if (isStringHeld)
         {
-            transform.rotation = holdingHand.transform.rotation;
-            // need to set so that it rotates to the direction between the hands.
-            // is calculated in CalculatePull as well ?
+            Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
+            transform.rotation = Quaternion.LookRotation(aimDirection,Vector3.up); // test to see which is correct
+            
         } else transform.rotation = holdingHand.transform.rotation;
     }
     
     public void SetRightHand()
     {
-        rightHand = holdingHand;
-        leftHand = pullingHand;
+        holdingHand = rightHand;
+        pullingHand = leftHand;
         bowIsHeld = true;
         //arrowGrabPoint.enabled = true;
         bowGrabPoint.enabled = false;
@@ -193,12 +195,16 @@ public class Bow : MonoBehaviour
     }
     public void SetLeftHand()
     {
-        leftHand = holdingHand;
-        rightHand = pullingHand;
+        holdingHand = leftHand;
+        pullingHand = rightHand;
         bowIsHeld = true;
         //arrowGrabPoint.enabled = true;
         bowGrabPoint.enabled = false;
         leftHandMesh.enabled = false;
     }
-    
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(startDrawPoint.position, grabThreshold);
+    }
+
 }

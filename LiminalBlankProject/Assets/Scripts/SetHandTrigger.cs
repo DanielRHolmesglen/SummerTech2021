@@ -26,10 +26,11 @@ public class SetHandTrigger : MonoBehaviour
     private void Start()
     {
         //Debug.Log("SetHandTrigger Start");
-        bowMesh.material.SetColor("_Color", Color.cyan);
+        //bowMesh.material.SetColor("_Color", Color.cyan);
         bowCollider = GetComponentInChildren<BoxCollider>();
         //primaryInput = VRDevice.Device.PrimaryInputDevice;
         //secondaryInput = VRDevice.Device.SecondaryInputDevice;
+
     }
     
     private void Update()
@@ -67,6 +68,10 @@ public class SetHandTrigger : MonoBehaviour
             }
         } else return;
         
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(bowGrabPoint.transform.position, grabDistance);
     }
     /*
 
