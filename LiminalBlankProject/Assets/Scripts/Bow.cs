@@ -12,8 +12,8 @@ public class Bow : MonoBehaviour
     public GameObject leftHand; // SecondaryHand
 
     public GameObject testArrow;
-    public float moveSpeed = 2000f;
-    private Rigidbody testArrowRB;
+    public float moveSpeed = 10f;
+    //private Rigidbody testArrowRB;
     public Transform arrowSpawnPoint;
 
     //public MeshRenderer bowMesh;
@@ -56,7 +56,7 @@ public class Bow : MonoBehaviour
 
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
-        testArrowRB = testArrow.GetComponent<Rigidbody>();
+        //testArrowRB = testArrow.GetComponent<Rigidbody>();
         //arrowGrabPoint.enabled = false;
         animator = GetComponent<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
@@ -168,13 +168,13 @@ public class Bow : MonoBehaviour
         if (isStringHeld)
         {
             Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
-            Vector3 handAngle = new Vector3(0,0,holdingHand.transform.rotation.z);
-            transform.rotation = Quaternion.LookRotation(aimDirection,handAngle);
+            Vector3 handAngle = new Vector3(holdingHand.transform.position.x,holdingHand.transform.position.y,holdingHand.transform.rotation.z);
+            transform.rotation = Quaternion.LookRotation(aimDirection,handAngle); // currenty wrong
 
-            //Vector3 aimDirection = new Vector3(pullingHand.transform.position.x, pullingHand.transform.position.y, holdingHand.transform.position.z);
-            //transform.rotation = Quaternion.Euler(aimDirection);
+            // need to get the z rotation of the holding hand
 
         } else transform.rotation = holdingHand.transform.rotation;
+        // need to offset x rotation by 45 degrees
     }
     
     public void SetRightHand()
@@ -205,9 +205,9 @@ public class Bow : MonoBehaviour
     }
     private void FireTestArrow(float pullValue)
     {
-        GameObject arrow = Instantiate<GameObject>(testArrow, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
-        //shot.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
-        testArrowRB.AddForce(transform.forward * (pullValue * moveSpeed));
+        GameObject arrow = Instantiate (testArrow, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+        arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
+        
 
         Destroy(arrow, 2.5f);
     }
