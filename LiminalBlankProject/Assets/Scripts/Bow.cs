@@ -180,14 +180,14 @@ public class Bow : MonoBehaviour
     private void UpdateBowPosition()
     {
         transform.position = holdingHand.transform.position;
-        //match the facind direction of the hand
-        
         if (isStringHeld)
         {
-            Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
+            //Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
+            //transform.rotation = Quaternion.LookRotation(aimDirection);
+            
+            Vector3 aimDirection = new Vector3(pullingHand.transform.position.x, pullingHand.transform.position.y, holdingHand.transform.position.z);
             transform.rotation = Quaternion.LookRotation(aimDirection);
-            // need to set so that it rotates to the direction between the hands.
-            // is calculated in CalculatePull as well ?
+
         } else transform.rotation = holdingHand.transform.rotation;
     }
     
