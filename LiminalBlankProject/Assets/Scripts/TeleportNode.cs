@@ -14,7 +14,7 @@ public class TeleportNode : MonoBehaviour
    // public Transform playerTeleportLocation;
     public List<GameObject> spawnPositions;
     public int numberOfEnemiesToSpawn;
-    public int enemiesSpawned;
+    private int enemiesSpawned;
     public int speedOfEnemies;
     public float enemySpawnTimer;
     public static int enemiesKilled;
@@ -30,7 +30,7 @@ public class TeleportNode : MonoBehaviour
         readyToSpawn = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (startStage == true & readyToSpawn == true)
         {
@@ -45,6 +45,7 @@ public class TeleportNode : MonoBehaviour
 
         if(enemiesKilled == numberOfEnemiesToSpawn)
         {
+            enemiesKilled = 0;
             nextNode.SetActive(true);
             Destroy(gameObject);
         }

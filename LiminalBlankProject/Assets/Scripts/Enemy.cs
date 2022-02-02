@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public ParticleSystem entryParticle;
 
+    private void Start()
+    {
+        entryParticle.Play();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

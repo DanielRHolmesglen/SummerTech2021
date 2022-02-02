@@ -26,7 +26,7 @@ public class Bow : MonoBehaviour
     public Transform startDrawPoint;
     public bool bowIsHeld = false;
     public ParticleSystem burstParticle;
-    public Vector3 arrowSocket;
+    //public Transform arrowSocket;
 
 
     //private ButtonInputs inputs;
@@ -34,6 +34,7 @@ public class Bow : MonoBehaviour
     private GameObject pullingHand;
     private MeshRenderer rightHandMesh;
     private MeshRenderer leftHandMesh;
+    private Transform arrowDefault;
     public MeshRenderer bowMesh;
     private GameObject currentArrow; //'Arrow' in tutorial?
     private Animator animator;
@@ -58,6 +59,7 @@ public class Bow : MonoBehaviour
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
         //testArrowRB = testArrow.GetComponent<Rigidbody>();
         //arrowGrabPoint.enabled = false;
+        //arrowDefault.position = arrowSocket.position;
         animator = GetComponent<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
         //added for debugging
@@ -100,6 +102,7 @@ public class Bow : MonoBehaviour
         Vector3 direction = fullDrawPoint.position - startDrawPoint.position;
         float magnitude = direction.magnitude;
 
+        //arrowSocket.position = pullHand.position;
         // need to make the arrow pull back here
 
         direction.Normalize();
@@ -132,11 +135,11 @@ public class Bow : MonoBehaviour
         if (pullValue > 0.25f) FireTestArrow(pullValue);
         // play release soundfx
         //pullingHand = null; // ???
-
+        //arrowSocket.position = arrowDefault.position;
         pullValue = 0;
         animator.SetFloat("Blend", 0);
-
-        if (!currentArrow)
+        
+        if (!currentArrow) // not working
             StartCoroutine(CreateDummyArrow(0.25f));
     }
     private void FireArrow()
@@ -205,8 +208,6 @@ public class Bow : MonoBehaviour
     {
         GameObject arrow = Instantiate (testArrow, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
         arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
-        
-
         Destroy(arrow, 2.5f);
     }
 }
