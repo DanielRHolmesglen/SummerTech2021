@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319124609}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2184250354899285390}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &771547744720367966
 GameObject:
   m_ObjectHideFlags: 0
@@ -5181,7 +5181,7 @@ MonoBehaviour:
   testArrow: {fileID: 6668657890513498218, guid: 709d74317dad2ca469e0078fb6e7167d,
     type: 3}
   moveSpeed: 2000
-  arrowSpawnPoint: {fileID: 0}
+  arrowSpawnPoint: {fileID: 1319124610}
   grabThreshold: 0.15
   bowGrabPoint: {fileID: 72021578016132557}
   fullDrawPoint: {fileID: 7373881061577481070}

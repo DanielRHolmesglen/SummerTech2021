@@ -168,15 +168,13 @@ public class Bow : MonoBehaviour
         if (isStringHeld)
         {
             Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
-            Vector3 handAngle = new Vector3(holdingHand.transform.position.x,holdingHand.transform.position.y,holdingHand.transform.rotation.z);
-            transform.rotation = Quaternion.LookRotation(aimDirection,handAngle); // currenty wrong
-
-            // need to get the z rotation of the holding hand
+            transform.rotation = Quaternion.LookRotation(aimDirection, holdingHand.transform.up);
 
         } else transform.rotation = holdingHand.transform.rotation;
-        // need to offset x rotation by 45 degrees
+        // need to offset x rotation by 40-45 degrees so when you hold the controller straight the bow is straight
+        //Quaternion.Euler(holdingHand.transform.rotation.x - 40,holdingHand.transform.rotation.y,holdingHand.transform.rotation.z);
     }
-    
+
     public void SetRightHand()
     {
         //rightHand = holdingHand;
