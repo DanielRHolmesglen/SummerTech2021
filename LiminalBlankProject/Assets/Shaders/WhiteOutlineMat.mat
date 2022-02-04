@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WhiteOutlineMat
+  m_Shader: {fileID: 4800000, guid: c3de8e731c9a2cb428a85a1363ee0bfd, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _Cutoff: 0.5
+    - _Outlinewidth: 0.05
+    - _Transparent: 0
+    - _node_2980: 0
+    - _node_3589: 0
+    - _node_3691: 0
+    - _node_4082: 1
+    - _node_7230: 0
+    - _node_9444: 0
+    m_Colors:
+    - _OutlineColour: {r: 1, g: 1, b: 1, a: 0}
+    - _Transparent: {r: 1, g: 0, b: 0, a: 0}
+    - _node_1622: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _node_3009: {r: 0.8679245, g: 0.45443216, b: 0.45443216, a: 0}
+    - _node_4219: {r: 1, g: 1, b: 1, a: 1}
+    - _node_5108: {r: 0.5, g: 0.5, b: 0.5, a: 1}

@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public ParticleSystem entryParticle;
 
-    private void Start()
+    private void Awake()
     {
         entryParticle.Play();
     }

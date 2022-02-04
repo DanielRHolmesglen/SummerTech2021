@@ -13,26 +13,8 @@ public class SetHandTrigger : MonoBehaviour
     public GameObject bowGrabPoint;
     public MeshRenderer bowMesh;
 
-    private BoxCollider bowCollider;
-    private ButtonInputs triggerInputs;
-
     private float grabDistance = 0.15f;
 
-    private void Awake()
-    {
-        //Debug.Log("SetHandTrigger Awake");
-    }
-
-    private void Start()
-    {
-        //Debug.Log("SetHandTrigger Start");
-        //bowMesh.material.SetColor("_Color", Color.cyan);
-        bowCollider = GetComponentInChildren<BoxCollider>();
-        //Invoke("ChangeColorBack", 1f);
-        //primaryInput = VRDevice.Device.PrimaryInputDevice;
-        //secondaryInput = VRDevice.Device.SecondaryInputDevice;
-    }
-    
     private void Update()
     {
         primaryInput = VRDevice.Device.PrimaryInputDevice;
@@ -47,6 +29,7 @@ public class SetHandTrigger : MonoBehaviour
             if (rightDistance < grabDistance)
             {
                 bowMesh.material.SetColor("_Color", Color.blue);
+                //add grab effect, either particle of colour
                 if (primaryInput.GetButton(VRButton.Trigger))
                 {
                     bow.SetRightHand();
@@ -55,6 +38,7 @@ public class SetHandTrigger : MonoBehaviour
             } else if (leftDistance < grabDistance)
             {
                 bowMesh.material.SetColor("_Color", Color.red);
+                //add grab effect, either particle of colour
                 if (secondaryInput.GetButton(VRButton.Trigger))
                 {
                     bow.SetLeftHand();
@@ -69,34 +53,6 @@ public class SetHandTrigger : MonoBehaviour
         } else return;
         
     }
-    public void ChangeColorBack()
-    {
-        bowMesh.material.SetColor("_Color", Color.red);
-    }
-    /*
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject == rightHand)
-        {
-            bowMesh.material.SetColor("_Color", Color.blue);
-            //add fx here for grab
-            if (primaryInput.GetButton(VRButton.Trigger))
-            {
-                bow.SetRightHand();
-            }
-        }
-        if (other.gameObject == leftHand)
-        {
-            bowMesh.material.SetColor("_Color", Color.red);
-            //add fx here for grab
-            if (secondaryInput.GetButton(VRButton.Trigger))
-            {
-                bow.SetLeftHand();
-            }
-        }
-        return;
-    }*/
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, grabDistance);
