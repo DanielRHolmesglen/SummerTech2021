@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public ParticleSystem entryParticle;
+    public ParticleSystem deathParticles;
+    public GameObject deathSFX;
 
     private void Start()
     {
@@ -15,6 +17,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Arrow")
         {
+            Instantiate(deathSFX, transform.position, Quaternion.identity);
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
             TeleportNode.playerScore += 13;
             Debug.Log("EnemyDead");
