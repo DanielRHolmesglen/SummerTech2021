@@ -7721,13 +7721,13 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyType.Array.data[0]
       value: 
-      objectReference: {fileID: 1686669656388613733, guid: 9f00f9c2b0c63a043b007307b35e5269,
+      objectReference: {fileID: 3683977875514792354, guid: de2ecdd902b082d43a9804a9cf96aad6,
         type: 3}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemyType.Array.data[1]
       value: 
-      objectReference: {fileID: 1686669656388613733, guid: f08f5b01dfe9de04ba9bd3cd34c97083,
+      objectReference: {fileID: 1668544617795195392, guid: 54c830554a3df8d4ebc3a7b4611c4c87,
         type: 3}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
@@ -7810,11 +7810,6 @@ PrefabInstance:
     - target: {fileID: 5231695660740429289, guid: 003066dd9be6da54fa9de0941f2c176a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231695661530194723, guid: 003066dd9be6da54fa9de0941f2c176a,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

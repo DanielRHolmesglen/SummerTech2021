@@ -12,7 +12,7 @@ public class TeleportNode : MonoBehaviour
     public GameObject[] enemyType;
     public GameObject nextNode;
     public GameObject waveMusic;
-   // public Transform playerTeleportLocation;
+    // public Transform playerTeleportLocation;
     public List<GameObject> spawnPositions;
     public int numberOfEnemiesToSpawn;
     private int enemiesSpawned;
