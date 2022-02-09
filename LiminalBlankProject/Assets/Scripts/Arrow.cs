@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public BoxCollider arrowCollider;
+    public CapsuleCollider arrowCollider;
     public Transform tip;
 
     private Rigidbody rb;
@@ -15,13 +15,13 @@ public class Arrow : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         arrowMesh = GetComponent<MeshRenderer>();
+
     }
     private void Update()
     {
-        //rb.MoveRotation(Quaternion.LookRotation(rb.velocity, transform.up));
+        
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         rb.MoveRotation(Quaternion.LookRotation(rb.velocity, transform.up));

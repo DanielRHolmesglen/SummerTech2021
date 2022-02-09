@@ -24,11 +24,10 @@ public class Bow : MonoBehaviour
     public ParticleSystem arrowSpawn;
     public ParticleSystem burstParticle;
 
-    [Header("Bow String")]
-    public LineRenderer bowString;
+    [Header("Bow String")]    
     public Transform topStringPoint;
     public Transform bottomStringPoint;
-
+    public LineRenderer bowString;
 
     public IVRInputDevice primaryInput, secondaryInput;
 
@@ -40,28 +39,35 @@ public class Bow : MonoBehaviour
     private GameObject pullingHand;
     private MeshRenderer rightHandMesh;
     private MeshRenderer leftHandMesh;
-    //private Transform arrowNotchDefaultPoint;
+    //private Transform arrowNotchDefaultPoint; set as new transform
     private Animator animator;
     private bool isStringHeld = false;
+    
 
     private float pullValue = 0.0f;
 
    
     void Start()
     {
+        
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
         arrowNotchDefaultPoint.position = arrowNotch.position;
+        bowString = GetComponent<LineRenderer>();
 
         //Line renderer positions
-        Vector3[] positions = new Vector3[3];
-        positions[0] = topStringPoint.transform.position;
-        positions[1] = arrowNotch.transform.position;
-        positions[2] = bottomStringPoint.transform.position;
-        bowString.positionCount = positions.Length;
-        bowString.SetPositions(positions);
+        if (bowString)
+        {
+            Vector3[] positions = new Vector3[3];
+            positions[0] = topStringPoint.transform.position;
+            positions[1] = arrowNotch.transform.position; // need to set in update
+            positions[2] = bottomStringPoint.transform.position;
+            bowString.positionCount = positions.Length;
+            bowString.SetPositions(positions);
+        }
+        
     }
 
     // Update is called once per frame
@@ -81,6 +87,7 @@ public class Bow : MonoBehaviour
                 pullValue = Mathf.Clamp(pullValue, 0f, 1f);
 
                 arrowNotch.position = pullingHand.transform.position;
+                
                 animator.SetFloat("Blend", pullValue);
 
                 if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) == false || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger) == false)
@@ -99,7 +106,6 @@ public class Bow : MonoBehaviour
         Vector3 direction = fullDrawPoint.position - arrowGrabPoint.position;
         float magnitude = direction.magnitude;
 
-        
         direction.Normalize();
         Vector3 difference = pullHand.position - arrowGrabPoint.position;
 
@@ -134,21 +140,21 @@ public class Bow : MonoBehaviour
             arrowNotch.position = arrowNotchDefaultPoint.position;
 
             pullValue = 0;
-            animator.SetFloat("Blend", 0);
+            animator.SetFloat("Blend", 0.0f);
 
-            StartCoroutine(CreateDummyArrow(0.1f));
+            StartCoroutine(CreateDummyArrow(0.25f));
 
         } else
         {
             pullValue = 0;
-            animator.SetFloat("Blend", 0);
+            animator.SetFloat("Blend", 0.0f);
             arrowNotch.position = arrowNotchDefaultPoint.position;
         }
        
     }
     private void FireArrow(float pullValue)
     {
-        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.localRotation);
+        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation); // rotation dosn't work ???
         arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
         Destroy(arrow, 2.5f);
     }
@@ -171,9 +177,11 @@ public class Bow : MonoBehaviour
             Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
             transform.rotation = Quaternion.LookRotation(aimDirection, holdingHand.transform.up);
 
+            //arrowSpawnPoint.rotation = Quaternion.LookRotation(aimDirection); this should be set anyway because it's a child
+
         } else transform.rotation = holdingHand.transform.rotation;
-        // need to offset x rotation by 40-45 degrees so when you hold the controller straight the bow is straight
-        //Quaternion.Euler(holdingHand.transform.rotation.x - 40,holdingHand.transform.rotation.y,holdingHand.transform.rotation.z);
+        // need to add 45 to x axis rotaion of holdingHand
+        
     }
 
     public void SetRightHand()
