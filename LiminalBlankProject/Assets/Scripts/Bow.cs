@@ -41,7 +41,7 @@ public class Bow : MonoBehaviour
    
     void Start()
     {
-        //Debug.Log("Bow Start");
+        Debug.Log("Bow Start");
 
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
@@ -117,7 +117,7 @@ public class Bow : MonoBehaviour
             FireArrow(pullValue);
             // play release soundfx
             arrowMesh.enabled = false;
-            arrowNotch.position = arrowNotchDefaultPoint.position;
+            arrowNotchDefaultPoint.position = arrowNotch.position;
 
             pullValue = 0;
             animator.SetFloat("Blend", 0);
@@ -128,13 +128,13 @@ public class Bow : MonoBehaviour
         {
             pullValue = 0;
             animator.SetFloat("Blend", 0);
-            arrowNotch.position = arrowNotchDefaultPoint.position;
+            arrowNotchDefaultPoint.position = arrowNotch.position;
         }
-        
+       
     }
     private void FireArrow(float pullValue)
     {
-        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.localRotation);
+        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
         arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
         Destroy(arrow, 2.5f);
     }
