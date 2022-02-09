@@ -11,7 +11,7 @@ public class SetHandTrigger : MonoBehaviour
     public IVRInputDevice primaryInput, secondaryInput;
     public Bow bow;
     public GameObject bowGrabPoint;
-    public MeshRenderer bowMesh;
+    public SkinnedMeshRenderer bowMesh;
 
     private float grabDistance = 0.15f;
 

@@ -6,33 +6,41 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour
 {
-    public GameObject arrowPrefab; // for instatiating the shot arrow
-    public MeshRenderer arrowMesh; // for holding an arrow in the bow
-    public GameObject rightHand;  //PrimaryHand
-    public GameObject leftHand; // SecondaryHand
-    public float moveSpeed = 10f;
+    [Tooltip("Vr Primary Hand")]
+    public GameObject rightHand;  
+    [Tooltip("Vr Secondary Hand")]
+    public GameObject leftHand; 
+
+    public GameObject arrowPrefab; 
+    public MeshRenderer arrowMesh;
     public Transform arrowSpawnPoint;
-    public MeshRenderer bowMesh;
-    public float grabThreshold = 0.15f;
+    public SkinnedMeshRenderer bowMesh;
     public Transform bowGrabPoint;
     public Transform fullDrawPoint;
     public Transform arrowGrabPoint;
     public Transform arrowNotch;
+    public Transform arrowNotchDefaultPoint;
     public bool bowIsHeld = false;
     public ParticleSystem arrowSpawn;
     public ParticleSystem burstParticle;
+
+    [Header("Bow String")]
+    public LineRenderer bowString;
+    public Transform topStringPoint;
+    public Transform bottomStringPoint;
 
 
     public IVRInputDevice primaryInput, secondaryInput;
 
 
     //private ButtonInputs inputs;
+    private float grabThreshold = 0.15f;
+    private float moveSpeed = 2000f;
     private GameObject holdingHand;
     private GameObject pullingHand;
     private MeshRenderer rightHandMesh;
     private MeshRenderer leftHandMesh;
-    private Transform arrowNotchDefaultPoint; // to set the point the arrow mesh returns to
-    //private GameObject currentArrow; //'Arrow' in tutorial?
+    //private Transform arrowNotchDefaultPoint;
     private Animator animator;
     private bool isStringHeld = false;
 
@@ -41,13 +49,19 @@ public class Bow : MonoBehaviour
    
     void Start()
     {
-        Debug.Log("Bow Start");
-
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
-        arrowNotch.position = arrowNotchDefaultPoint.position;
+        arrowNotchDefaultPoint.position = arrowNotch.position;
+
+        //Line renderer positions
+        Vector3[] positions = new Vector3[3];
+        positions[0] = topStringPoint.transform.position;
+        positions[1] = arrowNotch.transform.position;
+        positions[2] = bottomStringPoint.transform.position;
+        bowString.positionCount = positions.Length;
+        bowString.SetPositions(positions);
     }
 
     // Update is called once per frame
@@ -117,7 +131,7 @@ public class Bow : MonoBehaviour
             FireArrow(pullValue);
             // play release soundfx
             arrowMesh.enabled = false;
-            arrowNotchDefaultPoint.position = arrowNotch.position;
+            arrowNotch.position = arrowNotchDefaultPoint.position;
 
             pullValue = 0;
             animator.SetFloat("Blend", 0);
@@ -128,13 +142,13 @@ public class Bow : MonoBehaviour
         {
             pullValue = 0;
             animator.SetFloat("Blend", 0);
-            arrowNotchDefaultPoint.position = arrowNotch.position;
+            arrowNotch.position = arrowNotchDefaultPoint.position;
         }
        
     }
     private void FireArrow(float pullValue)
     {
-        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.localRotation);
         arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
         Destroy(arrow, 2.5f);
     }
