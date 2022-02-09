@@ -154,7 +154,7 @@ public class Bow : MonoBehaviour
     }
     private void FireArrow(float pullValue)
     {
-        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation); // rotation dosn't work ???
+        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.transform.rotation); // rotation dosn't work ???
         arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
         Destroy(arrow, 2.5f);
     }
@@ -177,7 +177,7 @@ public class Bow : MonoBehaviour
             Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
             transform.rotation = Quaternion.LookRotation(aimDirection, holdingHand.transform.up);
 
-            //arrowSpawnPoint.rotation = Quaternion.LookRotation(aimDirection); this should be set anyway because it's a child
+            arrowSpawnPoint.transform.rotation = Quaternion.LookRotation(aimDirection);
 
         } else transform.rotation = holdingHand.transform.rotation;
         // need to add 45 to x axis rotaion of holdingHand
