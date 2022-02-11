@@ -6,6 +6,7 @@ public class Arrow : MonoBehaviour
 {
     public CapsuleCollider arrowCollider;
     public Transform tip;
+    //public Transform arrowSpawnPoint;
 
     private Rigidbody rb;
     private Vector3 lastPosition = Vector3.zero;
@@ -15,13 +16,9 @@ public class Arrow : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         arrowMesh = GetComponent<MeshRenderer>();
+        //transform.rotation = arrowSpawnPoint.rotation;
 
     }
-    private void Update()
-    {
-        
-    }
-
     void FixedUpdate()
     {
         rb.MoveRotation(Quaternion.LookRotation(rb.velocity, transform.up));
