@@ -28,7 +28,8 @@ public class SetHandTrigger : MonoBehaviour
 
             if (rightDistance < grabDistance)
             {
-                bowMesh.material.SetColor("_Color", Color.blue);
+                //bowMesh.material.SetColor("_Color", Color.blue);
+
                 //add grab effect, either particle of colour
                 if (primaryInput.GetButton(VRButton.Trigger))
                 {
@@ -37,7 +38,8 @@ public class SetHandTrigger : MonoBehaviour
 
             } else if (leftDistance < grabDistance)
             {
-                bowMesh.material.SetColor("_Color", Color.red);
+                //bowMesh.material.SetColor("_Color", Color.red);
+
                 //add grab effect, either particle of colour
                 if (secondaryInput.GetButton(VRButton.Trigger))
                 {
@@ -47,7 +49,7 @@ public class SetHandTrigger : MonoBehaviour
             }
             else if (rightDistance > grabDistance && leftDistance > grabDistance)
             {
-                bowMesh.material.SetColor("_Color", Color.cyan);
+                //bowMesh.material.SetColor("_Color", Color.cyan);
                 return;
             }
         } else return;

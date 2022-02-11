@@ -24,21 +24,19 @@ public class Bow : MonoBehaviour
     public Transform arrowNotch;
     public Transform arrowNotchDefaultPoint;
     public Transform stringPosition;
+    public Transform topStringPos; //line renderers are jank, might be because there are positions alredy set?
+    public Transform bottomStringPos; // it needs to be set to world pos or wont work...
     public bool bowIsHeld = false;
     public ParticleSystem arrowSpawn;
     public ParticleSystem burstParticle;
     
 
-    [Header("Bow String")]    
-    //public Transform topStringPoint;
-    //public Transform bottomStringPoint;
+    [Header("Bow String")]
     public LineRenderer bowString;
-    public Vector3[] stringPoints;
+    public Transform[] stringPoints; // it's set here... but its not.
 
     public IVRInputDevice primaryInput, secondaryInput;
-
-
-    //private ButtonInputs inputs;
+    
     private float grabThreshold = 0.15f;
     private float moveSpeed = 2000f;
     private GameObject holdingHand;
@@ -46,7 +44,6 @@ public class Bow : MonoBehaviour
     private Transform anchorOffset;
     private MeshRenderer rightHandMesh;
     private MeshRenderer leftHandMesh;
-    //private Transform arrowNotchDefaultPoint; set as new transform
     private Animator animator;
     private bool isStringHeld = false;
     
@@ -62,13 +59,7 @@ public class Bow : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
         arrowNotchDefaultPoint.position = arrowNotch.position;
-        //bowString = GetComponent<LineRenderer>();
-
-        bowString.positionCount = stringPoints.Length;
-        //positions[0] = topStringPoint.transform.position;
-        //positions[1] = arrowNotch.transform.position; // need to set in update
-        //positions[2] = bottomStringPoint.transform.position;
-        //bowString.positionCount = positions.Length;
+        stringPosition.position = arrowNotchDefaultPoint.position;
         
     }
 
@@ -77,13 +68,10 @@ public class Bow : MonoBehaviour
     {
         primaryInput = VRDevice.Device.PrimaryInputDevice;
         secondaryInput = VRDevice.Device.SecondaryInputDevice;
-        bowString.SetPosition(1, stringPosition.localPosition);
 
-        
-        //for (int i = 0; i < stringPoints.Length; i++)
-        //{
-        //    bowString.SetPosition(i, stringPoints[i].localPosition);
-        //}
+        bowString.SetPosition(0, topStringPos.position);
+        bowString.SetPosition(1, stringPosition.position);
+        bowString.SetPosition(2, bottomStringPos.position);
 
         if (bowIsHeld)
         {
@@ -95,7 +83,7 @@ public class Bow : MonoBehaviour
                 pullValue = Mathf.Clamp(pullValue, 0f, 1f);
 
                 arrowNotch.position = pullingHand.transform.position;
-                stringPosition.localPosition = pullingHand.transform.position;
+                stringPosition.position = pullingHand.transform.position;
 
 
                 animator.SetFloat("Blend", pullValue);
@@ -148,6 +136,7 @@ public class Bow : MonoBehaviour
             // play release soundfx
             arrowMesh.enabled = false;
             arrowNotch.position = arrowNotchDefaultPoint.position;
+            stringPosition.position = arrowNotchDefaultPoint.position;
 
             pullValue = 0;
             animator.SetFloat("Blend", 0.0f);
@@ -159,6 +148,7 @@ public class Bow : MonoBehaviour
             pullValue = 0;
             animator.SetFloat("Blend", 0.0f);
             arrowNotch.position = arrowNotchDefaultPoint.position;
+            stringPosition.position = arrowNotchDefaultPoint.position;
         }
        
     }
