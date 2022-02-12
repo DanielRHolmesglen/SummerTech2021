@@ -7737,6 +7737,20 @@ PrefabInstance:
       propertyPath: fadeUI
       value: 
       objectReference: {fileID: 951199987}
+    - target: {fileID: 492438411, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248674300543514107, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742944013550592612, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
 --- !u!4 &5006512736634189451 stripped
