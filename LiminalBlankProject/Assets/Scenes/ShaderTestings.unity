@@ -7694,11 +7694,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
-      propertyPath: enemyType.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
-        type: 3}
       propertyPath: timerTxt
       value: 
       objectReference: {fileID: 1572402007}
@@ -7717,18 +7712,6 @@ PrefabInstance:
       propertyPath: nextNode
       value: 
       objectReference: {fileID: 562601380}
-    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
-        type: 3}
-      propertyPath: enemyType.Array.data[0]
-      value: 
-      objectReference: {fileID: 3683977875514792354, guid: de2ecdd902b082d43a9804a9cf96aad6,
-        type: 3}
-    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
-        type: 3}
-      propertyPath: enemyType.Array.data[1]
-      value: 
-      objectReference: {fileID: 1668544617795195392, guid: 54c830554a3df8d4ebc3a7b4611c4c87,
-        type: 3}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
       value: 
@@ -7737,20 +7720,6 @@ PrefabInstance:
       propertyPath: fadeUI
       value: 
       objectReference: {fileID: 951199987}
-    - target: {fileID: 492438411, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
-      propertyPath: m_Volume
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5248674300543514107, guid: 59cfc24190bacd445973b56e2c891f51,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4742944013550592612, guid: 59cfc24190bacd445973b56e2c891f51,
-        type: 3}
-      propertyPath: m_Volume
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
 --- !u!4 &5006512736634189451 stripped

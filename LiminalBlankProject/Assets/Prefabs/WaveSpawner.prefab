@@ -43,7 +43,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c4011dfa4bccb1140b4f8cd5f2075f4e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -248,7 +248,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bbffd32daaef34542906838c96461f82, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -475,8 +475,9 @@ MonoBehaviour:
   timerTxt: {fileID: 0}
   player: {fileID: 0}
   playerHead: {fileID: 0}
-  enemyType: {fileID: 1686669656388613733, guid: 9f00f9c2b0c63a043b007307b35e5269,
-    type: 3}
+  enemyType:
+  - {fileID: 3683977875514792354, guid: de2ecdd902b082d43a9804a9cf96aad6, type: 3}
+  - {fileID: 1668544617795195392, guid: 54c830554a3df8d4ebc3a7b4611c4c87, type: 3}
   nextNode: {fileID: 0}
   waveMusic: {fileID: 492438409}
   spawnPositions:
@@ -532,7 +533,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ec0667ecad47b6b48a553b9269448b3b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.629
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
