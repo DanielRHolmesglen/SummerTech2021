@@ -32,14 +32,15 @@ public class PlayerTeleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        teleport = true;
 
-        if (other.gameObject.tag == "Arrow")
-        {
-            teleport = true;
-           // playerPos.position = playerTeleportLocation.position;
-           // Destroy(gameObject);
-        }
-
+        //if (other.gameObject.tag == "Arrow")
+        //{
+        //    teleport = true;
+        //   // playerPos.position = playerTeleportLocation.position;
+        //   // Destroy(gameObject);
+        //}
+        //
     }
 
     void StopTeleport()
