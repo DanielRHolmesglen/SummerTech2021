@@ -15,15 +15,12 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Arrow")
-        {
-            Instantiate(deathSFX, transform.position, Quaternion.identity);
-            Instantiate(deathParticles, transform.position, Quaternion.identity);
-            TeleportNode.enemiesKilled++;
-            TeleportNode.playerScore += 13;
-            Debug.Log("EnemyDead");
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
+        Instantiate(deathSFX, transform.position, Quaternion.identity);
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
+        TeleportNode.enemiesKilled++;
+        TeleportNode.playerScore += 13;
+        Debug.Log("EnemyDead");
+        //Destroy(other.gameObject); kills the player ha ha ha
+        Destroy(gameObject);
     }
 }

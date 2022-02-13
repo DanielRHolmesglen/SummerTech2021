@@ -24,11 +24,13 @@ public class Bow : MonoBehaviour
     public Transform arrowNotch;
     public Transform arrowNotchDefaultPoint;
     public Transform stringPosition;
-    public Transform topStringPos; //line renderers are jank, might be because there are positions alredy set?
-    public Transform bottomStringPos; // it needs to be set to world pos or wont work...
+    public Transform topStringPos; //line renderers are jank.
+    public Transform bottomStringPos; // it needs to be set to world pos or wont work... and updated every frame...
     public bool bowIsHeld = false;
     public ParticleSystem arrowSpawn;
     public ParticleSystem burstParticle;
+    public AudioSource releaseAudioSource;
+    public AudioClip[] releaseSoundsArray;
     
 
     [Header("Bow String")]
@@ -91,7 +93,7 @@ public class Bow : MonoBehaviour
                 if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) == false || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger) == false)
                     
                 {
-                    bowMesh.material.SetColor("_Color", Color.cyan);
+                    //bowMesh.material.SetColor("_Color", Color.cyan);
                     isStringHeld = false;
                     Release();
                 }
@@ -117,12 +119,12 @@ public class Bow : MonoBehaviour
         
         if(distance < grabThreshold)
         {
-            bowMesh.material.SetColor("_Color", Color.green);
+            //bowMesh.material.SetColor("_Color", Color.green);
             //play grab string particle FX
             if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger))
             
             {
-                bowMesh.material.SetColor("_Color", Color.yellow);
+                //bowMesh.material.SetColor("_Color", Color.yellow);
                 isStringHeld = true;
             }
         } else { return; }
@@ -133,7 +135,8 @@ public class Bow : MonoBehaviour
         if (pullValue > 0.5f)
         {
             FireArrow(pullValue);
-            // play release soundfx
+            AudioClip releaseSFX = releaseSoundsArray[Random.Range(0, releaseSoundsArray.Length)];
+            releaseAudioSource.PlayOneShot(releaseSFX);
             arrowMesh.enabled = false;
             arrowNotch.position = arrowNotchDefaultPoint.position;
             stringPosition.position = arrowNotchDefaultPoint.position;
@@ -168,6 +171,8 @@ public class Bow : MonoBehaviour
         arrowMesh.enabled = true;
 
     }
+
+
    
 
     private void UpdateBowPosition()

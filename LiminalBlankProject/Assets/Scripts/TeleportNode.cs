@@ -11,7 +11,7 @@ public class TeleportNode : MonoBehaviour
     // public Transform playerPos;
     public GameObject[] enemyType;
     public GameObject nextNode;
-    public GameObject waveMusic;
+    //public GameObject waveMusic;
     // public Transform playerTeleportLocation;
     public List<GameObject> spawnPositions;
     public int numberOfEnemiesToSpawn;
@@ -24,7 +24,7 @@ public class TeleportNode : MonoBehaviour
 
     private void Start()
     {
-        waveMusic.SetActive(false);
+        //waveMusic.SetActive(false);
         timerTxt.SetActive(false);
         nextNode.SetActive(false);
         startStage = false;
@@ -60,7 +60,7 @@ public class TeleportNode : MonoBehaviour
             timerTxt.SetActive(true);           
             StageTimer.timerOn = true;
             Invoke("TimerForFirstSpawn", 4.0f);
-            waveMusic.SetActive(true);
+            //waveMusic.SetActive(true);
             Debug.Log("PLayerHit");
         }
 
