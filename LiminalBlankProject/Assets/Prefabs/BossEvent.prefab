@@ -1770,7 +1770,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25263242294960530}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 243, y: -2.9564104, z: -10.700156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2323,16 +2323,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4091079737771755982, guid: 77e4586d99c97c3409cbcbede599582e,
-        type: 3}
-      propertyPath: m_Name
-      value: pPlatonic1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2723884375383416174, guid: 77e4586d99c97c3409cbcbede599582e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.7401764
-      objectReference: {fileID: 0}
     - target: {fileID: 2723884375383416174, guid: 77e4586d99c97c3409cbcbede599582e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2342,16 +2332,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 5.252521
-      objectReference: {fileID: 0}
-    - target: {fileID: 7306939614157799933, guid: 77e4586d99c97c3409cbcbede599582e,
-        type: 3}
-      propertyPath: m_Name
-      value: pPlatonic2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6366551942001673199, guid: 77e4586d99c97c3409cbcbede599582e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.7762477
       objectReference: {fileID: 0}
     - target: {fileID: 6366551942001673199, guid: 77e4586d99c97c3409cbcbede599582e,
         type: 3}
@@ -2363,16 +2343,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.183332
       objectReference: {fileID: 0}
-    - target: {fileID: 8549854480999802444, guid: 77e4586d99c97c3409cbcbede599582e,
-        type: 3}
-      propertyPath: m_Name
-      value: pPlatonic3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148165180269832439, guid: 77e4586d99c97c3409cbcbede599582e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.8026025
-      objectReference: {fileID: 0}
     - target: {fileID: 6148165180269832439, guid: 77e4586d99c97c3409cbcbede599582e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2382,16 +2352,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -2.418514
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054613008034854086, guid: 77e4586d99c97c3409cbcbede599582e,
-        type: 3}
-      propertyPath: m_Name
-      value: pPlatonic4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5077891532016046720, guid: 77e4586d99c97c3409cbcbede599582e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.82246196
       objectReference: {fileID: 0}
     - target: {fileID: 5077891532016046720, guid: 77e4586d99c97c3409cbcbede599582e,
         type: 3}
