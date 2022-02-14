@@ -6,8 +6,8 @@ public class PlayerTeleport : MonoBehaviour
 {
     public Transform playerPos;
     public Transform playerTeleportLocation;
-    public GameObject fadeUI;
-    public GameObject teleportSFX;
+    //public GameObject fadeUI;
+    //public GameObject teleportSFX;
     private bool teleport = false;
 
     private void Start()
@@ -20,8 +20,8 @@ public class PlayerTeleport : MonoBehaviour
     {
         if (teleport == true)
         {
-            teleportSFX.SetActive (true);
-            fadeUI.SetActive(true);
+            //teleportSFX.SetActive (true);
+            //fadeUI.SetActive(true);
             Debug.Log("Teleport");
             playerPos.position = Vector3.Lerp(playerPos.position, playerTeleportLocation.position, 0.4f);
             Invoke("StopTeleport", 0.45f);
@@ -32,14 +32,15 @@ public class PlayerTeleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        teleport = true;
 
-        if (other.gameObject.tag == "Arrow")
-        {
-            teleport = true;
-           // playerPos.position = playerTeleportLocation.position;
-           // Destroy(gameObject);
-        }
-
+        //if (other.gameObject.tag == "Arrow")
+        //{
+        //    teleport = true;
+        //   // playerPos.position = playerTeleportLocation.position;
+        //   // Destroy(gameObject);
+        //}
+        //
     }
 
     void StopTeleport()
@@ -51,8 +52,8 @@ public class PlayerTeleport : MonoBehaviour
 
     void EndFade()
     {
-        teleportSFX.SetActive(false);
-        fadeUI.SetActive(false);
+        //teleportSFX.SetActive(false);
+        //fadeUI.SetActive(false);
     }
 
 }

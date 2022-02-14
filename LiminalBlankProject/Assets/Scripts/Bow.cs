@@ -6,65 +6,63 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour
 {
-    public Arrow arrowPrefab; // for instatiating the shot arrow
-    public MeshRenderer arrowMesh; // for holding an arrow in the bow
-    public GameObject rightHand;  //PrimaryHand
-    public GameObject leftHand; // SecondaryHand
+    [Tooltip("Vr Primary Hand")]
+    public GameObject rightHand;
+    public Transform rightAnchor;
+    
+    [Tooltip("Vr Secondary Hand")]
+    public GameObject leftHand;
+    public Transform leftAnchor;
 
-    public GameObject testArrow;
-    public float moveSpeed = 10f;
-    //private Rigidbody testArrowRB;
+    public GameObject arrowPrefab; 
+    public MeshRenderer arrowMesh;
     public Transform arrowSpawnPoint;
-
-    //public MeshRenderer bowMesh;
-    public IVRInputDevice primaryInput, secondaryInput;
-
-    public float grabThreshold = 0.15f;
-    //public BoxCollider arrowGrabPoint;
-    public BoxCollider bowGrabPoint;
+    public SkinnedMeshRenderer bowMesh;
+    public Transform bowGrabPoint;
     public Transform fullDrawPoint;
-    public Transform startDrawPoint;
+    public Transform arrowGrabPoint;
+    public Transform arrowNotch;
+    public Transform arrowNotchDefaultPoint;
+    public Transform stringPosition;
+    public Transform topStringPos; //line renderers are jank.
+    public Transform bottomStringPos; // it needs to be set to world pos or wont work... and updated every frame...
     public bool bowIsHeld = false;
+    public ParticleSystem arrowSpawn;
     public ParticleSystem burstParticle;
-    //public Transform arrowSocket;
+    public AudioSource releaseAudioSource;
+    public AudioClip[] releaseSoundsArray;
+    
 
+    [Header("Bow String")]
+    public LineRenderer bowString;
+    public Transform[] stringPoints; // it's set here... but its not.
 
-    //private ButtonInputs inputs;
+    public IVRInputDevice primaryInput, secondaryInput;
+    
+    private float grabThreshold = 0.15f;
+    private float moveSpeed = 2000f;
     private GameObject holdingHand;
     private GameObject pullingHand;
+    private Transform anchorOffset;
     private MeshRenderer rightHandMesh;
     private MeshRenderer leftHandMesh;
-    private Transform arrowDefault;
-    public MeshRenderer bowMesh;
-    private GameObject currentArrow; //'Arrow' in tutorial?
     private Animator animator;
     private bool isStringHeld = false;
-    //private bool rigthHandInRange = false;
-    //private bool leftHandInRange = false;
-    //private bool primaryTriggerHeld = false;
-    //private bool secondaryTriggerHeld = false;
+    
 
-    [SerializeField]private float pullValue = 0.0f;
+    private float pullValue = 0.0f;
 
-    private void Awake()
-    {
-        Debug.Log("Bow Awake");
-    }
-    // Start is called before the first frame update
+   
     void Start()
     {
-        Debug.Log("Bow Start");
-
+        
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
-        //testArrowRB = testArrow.GetComponent<Rigidbody>();
-        //arrowGrabPoint.enabled = false;
-        //arrowDefault.position = arrowSocket.position;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
-        //added for debugging
-        //SetRightHand();
-        //bowIsHeld = true;
+        arrowNotchDefaultPoint.position = arrowNotch.position;
+        stringPosition.position = arrowNotchDefaultPoint.position;
+        
     }
 
     // Update is called once per frame
@@ -72,24 +70,30 @@ public class Bow : MonoBehaviour
     {
         primaryInput = VRDevice.Device.PrimaryInputDevice;
         secondaryInput = VRDevice.Device.SecondaryInputDevice;
-        Debug.Log("Bow Update");
+
+        bowString.SetPosition(0, topStringPos.position);
+        bowString.SetPosition(1, stringPosition.position);
+        bowString.SetPosition(2, bottomStringPos.position);
 
         if (bowIsHeld)
         {
+
             UpdateBowPosition();
             if (isStringHeld)
             {
                 pullValue = CalculatePull(pullingHand.transform);
                 pullValue = Mathf.Clamp(pullValue, 0f, 1f);
 
+                arrowNotch.position = pullingHand.transform.position;
+                stringPosition.position = pullingHand.transform.position;
+
 
                 animator.SetFloat("Blend", pullValue);
 
                 if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) == false || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger) == false)
-                    //(primaryInput.GetButtonUp(VRButton.Trigger) || secondaryInput.GetButtonUp(VRButton.Trigger))
-                    // add in check for if left or right hand is pullingHand
+                    
                 {
-                    bowMesh.material.SetColor("_Color", Color.cyan);
+                    //bowMesh.material.SetColor("_Color", Color.cyan);
                     isStringHeld = false;
                     Release();
                 }
@@ -99,14 +103,11 @@ public class Bow : MonoBehaviour
 
     private float CalculatePull(Transform pullHand) 
     {
-        Vector3 direction = fullDrawPoint.position - startDrawPoint.position;
+        Vector3 direction = fullDrawPoint.position - arrowGrabPoint.position;
         float magnitude = direction.magnitude;
 
-        //arrowSocket.position = pullHand.position;
-        // need to make the arrow pull back here
-
         direction.Normalize();
-        Vector3 difference = pullHand.position - startDrawPoint.position;
+        Vector3 difference = pullHand.position - arrowGrabPoint.position;
 
         return Vector3.Dot(difference, direction) / magnitude;
     }
@@ -114,17 +115,16 @@ public class Bow : MonoBehaviour
     
     public void ReadyPull(GameObject hand) // assign pullHand
     {
-        float distance = Vector3.Distance(hand.transform.position, startDrawPoint.position);
+        float distance = Vector3.Distance(hand.transform.position, arrowGrabPoint.position);
         
         if(distance < grabThreshold)
         {
-            bowMesh.material.SetColor("_Color", Color.green);
+            //bowMesh.material.SetColor("_Color", Color.green);
             //play grab string particle FX
             if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger))
-            //(primaryInput.GetButtonDown(VRButton.Trigger)|| secondaryInput.GetButtonDown(VRButton.Trigger))
-            // add check for left or right hand.
+            
             {
-                bowMesh.material.SetColor("_Color", Color.yellow);
+                //bowMesh.material.SetColor("_Color", Color.yellow);
                 isStringHeld = true;
             }
         } else { return; }
@@ -132,37 +132,47 @@ public class Bow : MonoBehaviour
 
     public void Release()  
     {
-        if (pullValue > 0.25f) FireTestArrow(pullValue);
-        // play release soundfx
-        //pullingHand = null; // ???
-        //arrowSocket.position = arrowDefault.position;
-        pullValue = 0;
-        animator.SetFloat("Blend", 0);
-        
-        if (!currentArrow) // not working
+        if (pullValue > 0.5f)
+        {
+            FireArrow(pullValue);
+            AudioClip releaseSFX = releaseSoundsArray[Random.Range(0, releaseSoundsArray.Length)];
+            releaseAudioSource.PlayOneShot(releaseSFX);
+            arrowMesh.enabled = false;
+            arrowNotch.position = arrowNotchDefaultPoint.position;
+            stringPosition.position = arrowNotchDefaultPoint.position;
+
+            pullValue = 0;
+            animator.SetFloat("Blend", 0.0f);
+
             StartCoroutine(CreateDummyArrow(0.25f));
+
+        } else
+        {
+            pullValue = 0;
+            animator.SetFloat("Blend", 0.0f);
+            arrowNotch.position = arrowNotchDefaultPoint.position;
+            stringPosition.position = arrowNotchDefaultPoint.position;
+        }
+       
     }
-    private void FireArrow()
+    private void FireArrow(float pullValue)
     {
-        arrowPrefab.Fire(pullValue);
-        arrowMesh.enabled = false;
+        GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint);
+        arrow.transform.SetParent(null, true);
+        arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
+        Destroy(arrow, 2.5f);
     }
 
     private IEnumerator CreateDummyArrow(float waitTime)
     {
-
+        arrowSpawn.Play();
         // play arrow spawn particle fx
         yield return new WaitForSeconds(waitTime);
         arrowMesh.enabled = true;
 
-        
-        /*
-        GameObject arrowObject = Instantiate(arrowPrefab);
-        arrowObject.transform.localPosition = new Vector3(0, 0, 0.425f); // need to confirm location
-        arrowObject.transform.localEulerAngles = Vector3.zero;
-        currentArrow = arrowObject.GetComponent<GameObject>();
-        */
     }
+
+
    
 
     private void UpdateBowPosition()
@@ -173,9 +183,14 @@ public class Bow : MonoBehaviour
             Vector3 aimDirection = holdingHand.transform.position - pullingHand.transform.position;
             transform.rotation = Quaternion.LookRotation(aimDirection, holdingHand.transform.up);
 
-        } else transform.rotation = holdingHand.transform.rotation;
-        // need to offset x rotation by 40-45 degrees so when you hold the controller straight the bow is straight
-        //Quaternion.Euler(holdingHand.transform.rotation.x - 40,holdingHand.transform.rotation.y,holdingHand.transform.rotation.z);
+            arrowSpawnPoint.transform.rotation = Quaternion.LookRotation(aimDirection);
+
+        } else
+        {
+            transform.rotation = anchorOffset.transform.rotation;
+        }
+        // need to add 45 to x axis rotaion of holdingHand
+
     }
 
     public void SetRightHand()
@@ -184,9 +199,8 @@ public class Bow : MonoBehaviour
         //leftHand = pullingHand;
         holdingHand = rightHand;
         pullingHand = leftHand;
+        anchorOffset = rightAnchor;
         bowIsHeld = true;
-        //arrowGrabPoint.enabled = true;
-        bowGrabPoint.enabled = false;
         rightHandMesh.enabled = false;
     }
     public void SetLeftHand()
@@ -195,19 +209,13 @@ public class Bow : MonoBehaviour
         //rightHand = pullingHand;
         holdingHand = leftHand;
         pullingHand = rightHand;
+        anchorOffset = leftAnchor;
         bowIsHeld = true;
-        //arrowGrabPoint.enabled = true;
-        bowGrabPoint.enabled = false;
         leftHandMesh.enabled = false;
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(startDrawPoint.position, grabThreshold);
+        Gizmos.DrawWireSphere(arrowGrabPoint.position, grabThreshold);
     }
-    private void FireTestArrow(float pullValue)
-    {
-        GameObject arrow = Instantiate (testArrow, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
-        arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
-        Destroy(arrow, 2.5f);
-    }
+    
 }

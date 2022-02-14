@@ -45,7 +45,6 @@ public class ButtonInputs : MonoBehaviour
         {
             secondaryTriggerHeld = false;
         }
-
     }
 }
 
