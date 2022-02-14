@@ -8028,6 +8028,11 @@ PrefabInstance:
       propertyPath: playerHead
       value: 
       objectReference: {fileID: 156604038}
+    - target: {fileID: 25263241505513908, guid: 0f0fa4b358eda674e9050583ebab5235,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f0fa4b358eda674e9050583ebab5235, type: 3}
 --- !u!1001 &4414336074825296479
@@ -8125,11 +8130,6 @@ PrefabInstance:
       propertyPath: fadeUI
       value: 
       objectReference: {fileID: 951199987}
-    - target: {fileID: 5248674300543514107, guid: 59cfc24190bacd445973b56e2c891f51,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
 --- !u!4 &5006512736634189451 stripped
