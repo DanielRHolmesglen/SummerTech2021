@@ -6,13 +6,13 @@ public class PlayerTeleport : MonoBehaviour
 {
     public Transform playerPos;
     public Transform playerTeleportLocation;
-    //public GameObject fadeUI;
-    //public GameObject teleportSFX;
+    public GameObject fadeUI;
+    public GameObject teleportSFX;
     private bool teleport = false;
 
     private void Start()
     {
-        //fadeUI.SetActive(false);
+        fadeUI.SetActive(false);
     }
 
 
@@ -20,8 +20,8 @@ public class PlayerTeleport : MonoBehaviour
     {
         if (teleport == true)
         {
-            //teleportSFX.SetActive (true);
-            //fadeUI.SetActive(true);
+            teleportSFX.SetActive (true);
+            fadeUI.SetActive(true);
             Debug.Log("Teleport");
             playerPos.position = Vector3.Lerp(playerPos.position, playerTeleportLocation.position, 0.4f);
             Invoke("StopTeleport", 0.45f);
