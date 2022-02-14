@@ -4914,6 +4914,16 @@ PrefabInstance:
       propertyPath: playerHead
       value: 
       objectReference: {fileID: 703010050}
+    - target: {fileID: 25263242307001379, guid: 0f0fa4b358eda674e9050583ebab5235,
+        type: 3}
+      propertyPath: numberOfEnemiesToSpawn
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 25263242307001379, guid: 0f0fa4b358eda674e9050583ebab5235,
+        type: 3}
+      propertyPath: speedOfEnemies
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f0fa4b358eda674e9050583ebab5235, type: 3}
 --- !u!4 &1542105868 stripped
@@ -5018,13 +5028,23 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: numberOfEnemiesToSpawn
-      value: 1
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: nextNode
       value: 
       objectReference: {fileID: 1542105869}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: enemySpawnTimer
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: speedOfEnemies
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
       value: 
@@ -7016,13 +7036,23 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: numberOfEnemiesToSpawn
-      value: 1
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: nextNode
       value: 
       objectReference: {fileID: 1585010159}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: speedOfEnemies
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: enemySpawnTimer
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
       value: 
