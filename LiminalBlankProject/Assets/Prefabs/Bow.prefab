@@ -5513,9 +5513,13 @@ MonoBehaviour:
   arrowNotch: {fileID: 5854968102729274337}
   arrowNotchDefaultPoint: {fileID: 8929087233722108736}
   stringPosition: {fileID: 246497062074011950}
+  topStringPos: {fileID: 0}
+  bottomStringPos: {fileID: 0}
   bowIsHeld: 0
   arrowSpawn: {fileID: 1286416056472158898}
   burstParticle: {fileID: 0}
+  releaseAudioSource: {fileID: 0}
+  releaseSoundsArray: []
   bowString: {fileID: 7014459895049441750}
   stringPoints:
   - {fileID: 3339715998052536343}
