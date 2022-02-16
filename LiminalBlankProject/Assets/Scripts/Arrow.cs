@@ -32,7 +32,9 @@ public class Arrow : MonoBehaviour
     }
     private void Hit()
     {
-        // arrow hit particle
-        arrowMesh.enabled = false;
+        Destroy(this);
+        //arrowCollider.enabled = false;
+        //arrowMesh.enabled = false;
+        //rb.isKinematic = false;
     }
 }

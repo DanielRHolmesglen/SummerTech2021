@@ -22,8 +22,17 @@ public class TeleportNode : MonoBehaviour
     bool startStage;
     bool readyToSpawn;
 
+    public Material skybox;
+    public Color skyTintColour;
+    public Color ambientWorldColour;
+    [Tooltip("set between 0.55 - 1.4")]
+    public float skyExposure;
+
     private void Start()
     {
+        skybox.SetColor("_Tint", skyTintColour);
+        skybox.SetFloat("_Exposure", skyExposure);
+        RenderSettings.ambientLight = ambientWorldColour;
         waveMusic.SetActive(false);
         timerTxt.SetActive(false);
         nextNode.SetActive(false);
@@ -59,7 +68,7 @@ public class TeleportNode : MonoBehaviour
         {
             timerTxt.SetActive(true);           
             StageTimer.timerOn = true;
-            Invoke("TimerForFirstSpawn", 4.0f);
+            Invoke("TimerForFirstSpawn", 1.5f);
             waveMusic.SetActive(true);
             Debug.Log("PLayerHit");
         }

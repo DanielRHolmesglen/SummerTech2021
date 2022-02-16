@@ -9,9 +9,11 @@ public class PlayerTeleport : MonoBehaviour
     public GameObject fadeUI;
     public GameObject teleportSFX;
     private bool teleport = false;
+    
 
     private void Start()
     {
+        
         fadeUI.SetActive(false);
     }
 

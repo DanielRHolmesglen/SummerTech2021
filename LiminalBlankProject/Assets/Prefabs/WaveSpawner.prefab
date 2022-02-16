@@ -491,6 +491,21 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 8
   speedOfEnemies: 1
   enemySpawnTimer: 3
+  skybox: {fileID: 2100000, guid: 4e98ca17d6031c74e964a85fcd7060cc, type: 2}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &838738035195304326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414336075895728251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7488d41dd530af34aa92d9e54ef6a630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7362514364212779412
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,11 +640,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 348410202917688052}
     m_Modifications:
-    - target: {fileID: 7139599976522137561, guid: fba45d908a8fe574fb9159409996fdf1,
-        type: 3}
-      propertyPath: m_Name
-      value: SpawnLocations
-      objectReference: {fileID: 0}
     - target: {fileID: 7139599976522137560, guid: fba45d908a8fe574fb9159409996fdf1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -685,7 +695,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7139599976522137561, guid: fba45d908a8fe574fb9159409996fdf1,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnLocations
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1143177830843523855, guid: fba45d908a8fe574fb9159409996fdf1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fba45d908a8fe574fb9159409996fdf1, type: 3}
 --- !u!4 &4414336074507037120 stripped
 Transform:
@@ -736,11 +752,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1002746191}
     m_Modifications:
-    - target: {fileID: 6584029186602943509, guid: 1f9af11af7daa3149a78ffd51cba1c05,
-        type: 3}
-      propertyPath: m_Name
-      value: BreachNodes
-      objectReference: {fileID: 0}
     - target: {fileID: 4281544519735982567, guid: 1f9af11af7daa3149a78ffd51cba1c05,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -810,6 +821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 28.259495
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584029186602943509, guid: 1f9af11af7daa3149a78ffd51cba1c05,
+        type: 3}
+      propertyPath: m_Name
+      value: BreachNodes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9af11af7daa3149a78ffd51cba1c05, type: 3}

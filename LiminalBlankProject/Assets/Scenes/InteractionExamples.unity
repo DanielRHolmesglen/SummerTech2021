@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.03433981, g: 0.19461787, b: 0, a: 1}
-  m_AmbientEquatorColor: {r: 0.016807375, g: 0.11953845, b: 0, a: 1}
-  m_AmbientGroundColor: {r: 0, g: 0.020288562, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.7176471, g: 0.52617925, b: 0.4627451, a: 1}
+  m_AmbientEquatorColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+  m_AmbientGroundColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
   m_AmbientIntensity: 1.36
-  m_AmbientMode: 1
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 7a4b81503f7b98b49b024b790f59f971, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4e98ca17d6031c74e964a85fcd7060cc, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1177,6 +1177,41 @@ PrefabInstance:
       propertyPath: enemySpawnTimer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.r
+      value: 0.39640442
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.g
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.b
+      value: 0.5407274
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.r
+      value: 0.1986917
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.g
+      value: 0.41697863
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.b
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyExposure
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
       value: 
@@ -1193,7 +1228,7 @@ PrefabInstance:
     - target: {fileID: 4414336075895728250, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.16
+      value: 15.06
       objectReference: {fileID: 0}
     - target: {fileID: 4414336076338728368, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -1203,7 +1238,7 @@ PrefabInstance:
     - target: {fileID: 4414336076338728368, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.78
+      value: 13.679999
       objectReference: {fileID: 0}
     - target: {fileID: 4414336075831882431, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -1213,7 +1248,7 @@ PrefabInstance:
     - target: {fileID: 4414336075831882431, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.15
+      value: 21.05
       objectReference: {fileID: 0}
     - target: {fileID: 4414336076235667746, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -1223,7 +1258,7 @@ PrefabInstance:
     - target: {fileID: 4414336076235667746, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.16
+      value: 16.06
       objectReference: {fileID: 0}
     - target: {fileID: 4414336076235667746, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -1238,7 +1273,7 @@ PrefabInstance:
     - target: {fileID: 4414336074426192767, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.93
+      value: 23.83
       objectReference: {fileID: 0}
     - target: {fileID: 4414336074426192767, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -1254,6 +1289,11 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: bbffd32daaef34542906838c96461f82, type: 3}
+    - target: {fileID: 4414336076138022573, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
 --- !u!1001 &458458758
@@ -2085,6 +2125,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &614517023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614517016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a24669b395b99b44ad974e4151dc252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &626382125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 348410202917688040, guid: 59cfc24190bacd445973b56e2c891f51,
@@ -2253,14 +2305,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 348410203678898650}
-  - {fileID: 8868519951644472503}
-  - {fileID: 1809154345599320646}
-  - {fileID: 6483156115395513808}
-  - {fileID: 7389632105471068864}
-  - {fileID: 8022164631056943772}
-  - {fileID: 6131150558564624734}
-  - {fileID: 7446144129383576318}
+  - {fileID: 824063613}
+  - {fileID: 2065506403}
   m_Father: {fileID: 1996041152}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2917,7 +2963,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824063612}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.285201, y: -4.038943, z: 9.863905}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2929,8 +2975,8 @@ Transform:
   - {fileID: 2085117666}
   - {fileID: 1585010158}
   - {fileID: 1542105868}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 680338018}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &838558746
 GameObject:
@@ -4086,6 +4132,51 @@ PrefabInstance:
       propertyPath: enemySpawnTimer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.r
+      value: 0.40850836
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.g
+      value: 0.5265676
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.b
+      value: 0.6415094
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.r
+      value: 0.40784317
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.g
+      value: 0.5254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.b
+      value: 0.6431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skybox
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e98ca17d6031c74e964a85fcd7060cc, type: 2}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyExposure
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
       value: 
@@ -4102,12 +4193,27 @@ PrefabInstance:
     - target: {fileID: 4414336075895728250, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.09
+      value: 15.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414336075895728250, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 4414336076338728368, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414336076338728368, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414336076338728368, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.71
       objectReference: {fileID: 0}
     - target: {fileID: 4414336075831882431, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -4117,17 +4223,17 @@ PrefabInstance:
     - target: {fileID: 4414336075831882431, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.81
+      value: 18.85
       objectReference: {fileID: 0}
     - target: {fileID: 4414336076235667746, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.04
+      value: 14.3
       objectReference: {fileID: 0}
     - target: {fileID: 4414336076235667746, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.02
+      value: 13.61
       objectReference: {fileID: 0}
     - target: {fileID: 4414336076235667746, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -4142,7 +4248,7 @@ PrefabInstance:
     - target: {fileID: 4414336074426192767, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.91
+      value: 21.07
       objectReference: {fileID: 0}
     - target: {fileID: 4414336074426192767, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -4157,7 +4263,12 @@ PrefabInstance:
     - target: {fileID: 4414336076138022573, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.01
+      value: -8.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414336076138022573, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.91
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
@@ -4253,7 +4364,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5a21b944847a4a5448b8b289f3e5c991, type: 2}
+      objectReference: {fileID: 2100000, guid: 6a2a5eba6391e7643802c33693f6b1f6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e20550554d89df4597eecb21ebe6350, type: 3}
 --- !u!1001 &1322511353
@@ -4362,6 +4473,41 @@ PrefabInstance:
         type: 3}
       propertyPath: speedOfEnemies
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.r
+      value: 0.26502547
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.g
+      value: 0.49056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.b
+      value: 0.21057315
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.r
+      value: 0.20540175
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.g
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.b
+      value: 0.13416696
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyExposure
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
@@ -4947,6 +5093,41 @@ PrefabInstance:
       propertyPath: enemySpawnTimer
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.r
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.g
+      value: 0.422175
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.b
+      value: 0.17888929
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.r
+      value: 0.4811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.g
+      value: 0.36230952
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.b
+      value: 0.097588114
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyExposure
+      value: 0.82
+      objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
       value: 
@@ -5258,6 +5439,41 @@ PrefabInstance:
         type: 3}
       propertyPath: speedOfEnemies
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.r
+      value: 0.6037736
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.g
+      value: 0.14524741
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.b
+      value: 0.21032585
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.r
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.g
+      value: 0.09549662
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.b
+      value: 0.09549662
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyExposure
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
@@ -5866,6 +6082,41 @@ PrefabInstance:
         type: 3}
       propertyPath: enemySpawnTimer
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.r
+      value: 0.5943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.g
+      value: 0.38587362
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.b
+      value: 0.23268954
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.r
+      value: 0.5471698
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.g
+      value: 0.29718602
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.b
+      value: 0.21938412
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyExposure
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
@@ -7193,6 +7444,44 @@ MonoBehaviour:
   playerTeleportLocation: {fileID: 553793336}
   fadeUI: {fileID: 0}
   teleportSFX: {fileID: 0}
+--- !u!1 &2065506402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065506403}
+  m_Layer: 0
+  m_Name: Breach node(Old)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2065506403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065506402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 348410203678898650}
+  - {fileID: 8868519951644472503}
+  - {fileID: 1809154345599320646}
+  - {fileID: 6483156115395513808}
+  - {fileID: 7389632105471068864}
+  - {fileID: 8022164631056943772}
+  - {fileID: 6131150558564624734}
+  - {fileID: 7446144129383576318}
+  m_Father: {fileID: 680338018}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2085117665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7299,6 +7588,41 @@ PrefabInstance:
         type: 3}
       propertyPath: enemySpawnTimer
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.r
+      value: 0.6320754
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.g
+      value: 0.23119193
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyTintColour.b
+      value: 0.18783373
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.r
+      value: 0.745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.g
+      value: 0.2917853
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: ambientWorldColour.b
+      value: 0.2917853
+      objectReference: {fileID: 0}
+    - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
+        type: 3}
+      propertyPath: skyExposure
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 1002746187, guid: 59cfc24190bacd445973b56e2c891f51, type: 3}
       propertyPath: playerPos
@@ -7499,7 +7823,7 @@ Transform:
   - {fileID: 1080053293}
   - {fileID: 314155487}
   - {fileID: 1835130476}
-  m_Father: {fileID: 680338018}
+  m_Father: {fileID: 2065506403}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &348410203678898651
@@ -7532,6 +7856,10 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 5
   speedOfEnemies: 1
   enemySpawnTimer: 2
+  skybox: {fileID: 0}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+  skyExposure: 0
 --- !u!4 &1809154345599320646
 Transform:
   m_ObjectHideFlags: 0
@@ -7546,7 +7874,7 @@ Transform:
   - {fileID: 16236650}
   - {fileID: 1982925128}
   - {fileID: 838558747}
-  m_Father: {fileID: 680338018}
+  m_Father: {fileID: 2065506403}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1809154345599320647
@@ -7579,6 +7907,10 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 7
   speedOfEnemies: 1
   enemySpawnTimer: 1.5
+  skybox: {fileID: 0}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+  skyExposure: 0
 --- !u!23 &1809154345599320664
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7751,7 +8083,7 @@ Transform:
   - {fileID: 1345988228}
   - {fileID: 502700358}
   - {fileID: 1767114950}
-  m_Father: {fileID: 680338018}
+  m_Father: {fileID: 2065506403}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6131150558564624735
@@ -7784,6 +8116,10 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 12
   speedOfEnemies: 2
   enemySpawnTimer: 1
+  skybox: {fileID: 0}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+  skyExposure: 0
 --- !u!1 &6483156115395513804
 GameObject:
   m_ObjectHideFlags: 0
@@ -7877,7 +8213,7 @@ Transform:
   - {fileID: 2064433756}
   - {fileID: 740999660}
   - {fileID: 553793336}
-  m_Father: {fileID: 680338018}
+  m_Father: {fileID: 2065506403}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6483156115395513809
@@ -7910,6 +8246,10 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 8
   speedOfEnemies: 2
   enemySpawnTimer: 1.5
+  skybox: {fileID: 0}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+  skyExposure: 0
 --- !u!4 &7389632105471068864
 Transform:
   m_ObjectHideFlags: 0
@@ -7924,7 +8264,7 @@ Transform:
   - {fileID: 669733098}
   - {fileID: 1606588970}
   - {fileID: 1818481691}
-  m_Father: {fileID: 680338018}
+  m_Father: {fileID: 2065506403}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7389632105471068865
@@ -7957,6 +8297,10 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 9
   speedOfEnemies: 2
   enemySpawnTimer: 1
+  skybox: {fileID: 0}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+  skyExposure: 0
 --- !u!1 &7389632105471068892
 GameObject:
   m_ObjectHideFlags: 0
@@ -8129,7 +8473,7 @@ Transform:
   - {fileID: 1959157284}
   - {fileID: 854934360}
   - {fileID: 720233251}
-  m_Father: {fileID: 680338018}
+  m_Father: {fileID: 2065506403}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7446144129383576319
@@ -8162,6 +8506,10 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 15
   speedOfEnemies: 3
   enemySpawnTimer: 0.5
+  skybox: {fileID: 0}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+  skyExposure: 0
 --- !u!1 &8022164631056943744
 GameObject:
   m_ObjectHideFlags: 0
@@ -8255,7 +8603,7 @@ Transform:
   - {fileID: 1516031409}
   - {fileID: 1216094241}
   - {fileID: 1719251045}
-  m_Father: {fileID: 680338018}
+  m_Father: {fileID: 2065506403}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8022164631056943773
@@ -8288,6 +8636,10 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 10
   speedOfEnemies: 2
   enemySpawnTimer: 1
+  skybox: {fileID: 0}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+  skyExposure: 0
 --- !u!33 &8868519951644472488
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8397,6 +8749,10 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 6
   speedOfEnemies: 1
   enemySpawnTimer: 1.5
+  skybox: {fileID: 0}
+  skyTintColour: {r: 0, g: 0, b: 0, a: 0}
+  ambientWorldColour: {r: 0, g: 0, b: 0, a: 0}
+  skyExposure: 0
 --- !u!4 &8868519951644472503
 Transform:
   m_ObjectHideFlags: 0
@@ -8404,13 +8760,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8868519951644472491}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.61, y: -4.92, z: 23.929}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 130038502}
   - {fileID: 1032745857}
   - {fileID: 290939180}
-  m_Father: {fileID: 680338018}
+  m_Father: {fileID: 2065506403}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

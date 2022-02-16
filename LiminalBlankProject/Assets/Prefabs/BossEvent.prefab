@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 50
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
@@ -1629,7 +1629,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Have WON!!
+  m_Text: 'BREACHED
+
+'
 --- !u!114 &25263242055336830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2264,11 +2266,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 25263241941628678}
     m_Modifications:
-    - target: {fileID: 6584029186602943509, guid: 1f9af11af7daa3149a78ffd51cba1c05,
-        type: 3}
-      propertyPath: m_Name
-      value: BreachNodes
-      objectReference: {fileID: 0}
     - target: {fileID: 4281544519735982567, guid: 1f9af11af7daa3149a78ffd51cba1c05,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2338,6 +2335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 8.249719
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584029186602943509, guid: 1f9af11af7daa3149a78ffd51cba1c05,
+        type: 3}
+      propertyPath: m_Name
+      value: BreachNodes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9af11af7daa3149a78ffd51cba1c05, type: 3}
