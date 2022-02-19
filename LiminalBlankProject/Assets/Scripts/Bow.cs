@@ -77,7 +77,6 @@ public class Bow : MonoBehaviour
 
         if (bowIsHeld)
         {
-
             UpdateBowPosition();
             if (isStringHeld)
             {
