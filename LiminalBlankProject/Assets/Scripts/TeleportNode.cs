@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TeleportNode : MonoBehaviour
 {
-    public static int playerScore;
     public GameObject timerTxt;
     public GameObject player;
     public GameObject playerHead;

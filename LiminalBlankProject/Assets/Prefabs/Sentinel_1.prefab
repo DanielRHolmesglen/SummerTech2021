@@ -332,11 +332,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3683977875514792352}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 073a5859b3c400d498dbede07dd3c4e7,
-        type: 3}
-      propertyPath: m_Name
-      value: Sentinel_01
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 073a5859b3c400d498dbede07dd3c4e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -392,11 +387,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 073a5859b3c400d498dbede07dd3c4e7,
+        type: 3}
+      propertyPath: m_Name
+      value: Sentinel_01
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 073a5859b3c400d498dbede07dd3c4e7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cb2adf359d8ed5c4ab834c8c15fc5441, type: 2}
+      objectReference: {fileID: 2100000, guid: ad7e51df7dc7e7d4d8c650a65c11a9e6, type: 2}
     - target: {fileID: -8504955779229744144, guid: 073a5859b3c400d498dbede07dd3c4e7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -406,12 +406,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 18bc4a724d9581a4f913e6e216b11a92, type: 2}
+      objectReference: {fileID: 2100000, guid: df807af90b76d494794fb90655f66288, type: 2}
     - target: {fileID: -1131995486347405546, guid: 073a5859b3c400d498dbede07dd3c4e7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 18bc4a724d9581a4f913e6e216b11a92, type: 2}
+      objectReference: {fileID: 2100000, guid: df807af90b76d494794fb90655f66288, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 073a5859b3c400d498dbede07dd3c4e7, type: 3}
 --- !u!1 &4612235008636512564 stripped

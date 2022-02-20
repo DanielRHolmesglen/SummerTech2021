@@ -6,12 +6,13 @@ public class BossDeath : MonoBehaviour
 {
     public GameObject boss;
     public GameObject bossDeath;
+    public static bool bossDefeated = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        bossDeath.SetActive(false);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +22,7 @@ public class BossDeath : MonoBehaviour
         {
             boss.SetActive(false);
             bossDeath.SetActive(true);
+            bossDefeated = true;
         }
 
     }
