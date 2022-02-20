@@ -32,9 +32,7 @@ public class Arrow : MonoBehaviour
     }
     private void Hit()
     {
-        Destroy(this);
-        //arrowCollider.enabled = false;
-        //arrowMesh.enabled = false;
-        //rb.isKinematic = false;
+        Destroy(gameObject);
+        Debug.Log("Arrow Destroyed");
     }
 }
