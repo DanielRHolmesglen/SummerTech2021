@@ -32,7 +32,7 @@ public class Arrow : MonoBehaviour
     }
     private void Hit()
     {
-        Destroy(gameObject);
-        Debug.Log("Arrow Destroyed");
+        //Destroy(gameObject);
+        //Debug.Log("Arrow Destroyed");
     }
 }

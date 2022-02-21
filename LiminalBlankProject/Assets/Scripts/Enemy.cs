@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
             TeleportNode.enemiesKilled++;
             ScoreManager.playerScore += 13;
             Debug.Log("EnemyDead");
-            Destroy(other.gameObject); // not getting called on arrow?
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
