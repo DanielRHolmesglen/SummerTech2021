@@ -22,7 +22,7 @@ public class TeleportNode : MonoBehaviour
     bool startStage;
     bool readyToSpawn;
 
-    [Header("Skybow settings")]
+    [Header("Skybox settings")]
     public Material skybox;
     public Color skyTintColour;
     public Color ambientWorldColour;

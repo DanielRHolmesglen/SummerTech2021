@@ -75,6 +75,11 @@ public class Bow : MonoBehaviour
         bowString.SetPosition(1, stringPosition.position);
         bowString.SetPosition(2, bottomStringPos.position);
 
+        if (holdingHand == rightHand && primaryInput.GetButton(VRButton.Trigger)== false || holdingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger) == false)
+        {
+            BowDropped();
+        }
+
         if (bowIsHeld)
         {
             UpdateBowPosition();
@@ -188,8 +193,17 @@ public class Bow : MonoBehaviour
         {
             transform.rotation = anchorOffset.transform.rotation;
         }
-        // need to add 45 to x axis rotaion of holdingHand
+        
+    }
 
+    private void BowDropped()
+    {
+        holdingHand = null;
+        pullingHand = null;
+        anchorOffset = null;
+        bowIsHeld = false;
+        rightHandMesh.enabled = true;
+        leftHandMesh.enabled = true;
     }
 
     public void SetRightHand()
