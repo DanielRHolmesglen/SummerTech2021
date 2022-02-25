@@ -1145,7 +1145,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemySpawnTimer
-      value: 1.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -1207,7 +1207,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: speedOfEnemies
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -3098,7 +3098,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemySpawnTimer
-      value: 1.7
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -3616,12 +3616,12 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemySpawnTimer
-      value: 1.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: speedOfEnemies
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -4558,7 +4558,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemySpawnTimer
-      value: 1.4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -4729,6 +4729,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 25263240582760360, guid: 0f0fa4b358eda674e9050583ebab5235,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 25263242012448991, guid: 0f0fa4b358eda674e9050583ebab5235,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 25263242352962520, guid: 0f0fa4b358eda674e9050583ebab5235,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 25263242294960557, guid: 0f0fa4b358eda674e9050583ebab5235,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5133,23 +5150,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
         type: 0}
-    - target: {fileID: 25263242012448991, guid: 0f0fa4b358eda674e9050583ebab5235,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
-        type: 0}
-    - target: {fileID: 25263242352962520, guid: 0f0fa4b358eda674e9050583ebab5235,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
-        type: 0}
-    - target: {fileID: 25263240582760360, guid: 0f0fa4b358eda674e9050583ebab5235,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 16.61
-      objectReference: {fileID: 0}
     - target: {fileID: 25263240930089805, guid: 0f0fa4b358eda674e9050583ebab5235,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -5332,7 +5332,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemySpawnTimer
-      value: 1.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -5926,7 +5926,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemySpawnTimer
-      value: 1.3
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -7026,7 +7026,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemySpawnTimer
-      value: 1.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
