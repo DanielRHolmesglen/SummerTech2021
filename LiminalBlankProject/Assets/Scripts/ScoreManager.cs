@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
  
     void Update()
     {
-
+        
         if (BossDeath.bossDefeated == false)
         {
             timeValue += Time.deltaTime;
@@ -36,6 +36,10 @@ public class ScoreManager : MonoBehaviour
         endScore.text = score.text;
         endGameTime.text = gameTime.text;
 
+        if (playerScore <= 0)
+        {
+            playerScore = 0;
+        }
     }
 
     void DisplayTime(float timeToDisplay)
