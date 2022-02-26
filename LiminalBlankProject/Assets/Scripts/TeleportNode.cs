@@ -13,6 +13,7 @@ public class TeleportNode : MonoBehaviour
     public GameObject waveMusic;
     // public Transform playerTeleportLocation;
     public List<GameObject> spawnPositions;
+    private int spawnPositionsSize;
     public int numberOfEnemiesToSpawn;
     private int enemiesSpawned;
     public int speedOfEnemies;
@@ -31,6 +32,8 @@ public class TeleportNode : MonoBehaviour
 
     private void Start()
     {
+        spawnPositionsSize = spawnPositions.Count;
+
         waveMusic.SetActive(false);
         timerTxt.SetActive(false);
         nextNode.SetActive(false);
@@ -100,7 +103,7 @@ public class TeleportNode : MonoBehaviour
 
     void EnemySpawn()
     {
-        GameObject enemy = Instantiate(enemyType[Random.Range(0, enemyType.Length)], spawnPositions[Random.Range(0, 6)].transform.position, transform.rotation);
+        GameObject enemy = Instantiate(enemyType[Random.Range(0, enemyType.Length)], spawnPositions[Random.Range(0, spawnPositionsSize)].transform.position, transform.rotation);
         enemy.transform.LookAt(playerHead.transform);
         StartCoroutine(SendHoming(enemy));
        
