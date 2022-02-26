@@ -8,13 +8,6 @@ public class BossDeath : MonoBehaviour
     public GameObject bossDeath;
     public static bool bossDefeated = false;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
 

@@ -93,7 +93,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5, z: 1.5}
+  m_Size: {x: 2.5, y: 2.5, z: 2}
   m_Center: {x: 0, y: 0, z: 0.3}
 --- !u!114 &4330743011682334703
 MonoBehaviour:
@@ -108,10 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointUI: {fileID: 2809684154599282210, guid: e612cc2be0953bb42b3588aea3994d90, type: 3}
-  entryParticle: {fileID: 2793665815473453821, guid: 990125fc48d102a4e8e4a4042ce63a22,
-    type: 3}
-  deathParticles: {fileID: 2793665815473453821, guid: 990125fc48d102a4e8e4a4042ce63a22,
-    type: 3}
+  pointLossUI: {fileID: 0}
   deathSFX: {fileID: 3130801524486940424, guid: 3df410c2428cc9c4ebcab3269a7734fb,
     type: 3}
 --- !u!54 &4124218129832449181

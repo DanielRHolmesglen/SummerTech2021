@@ -7,51 +7,76 @@ public class Enemy : MonoBehaviour
 {
     public GameObject pointUI;
     public GameObject pointLossUI;
-    public ParticleSystem entryParticle;
-    public ParticleSystem deathParticles;
+    //public ParticleSystem entryParticle;
+    //public ParticleSystem deathParticles;
     public GameObject deathSFX;
     private int enemyPointValue;
     private float pointTimer;
 
-    private float currentScore = 15f;
-   // private int passoutScore;
+    //private float currentTime;
+    // private int passoutScore;
 
     private void Awake()
     {        
-        entryParticle.Play();
+        //entryParticle.Play();
         
     }
-   //private void Update()
-   //{
-      //  if (currentScore > 0)
-       // {
-        //    currentScore -= Time.deltaTime;
-         //   passoutScore = Mathf.RoundToInt(currentScore);
-       // }
-   // }
-
     private void Update()
     {
         pointTimer += Time.deltaTime;
-        if (pointTimer <= 1f)
+        
+    }
+    /*
+    private void Update()
+    {
+        pointTimer += Time.deltaTime;
+        if (pointTimer <= 2f)
         {
             enemyPointValue = 250;
         }
-        if (pointTimer > 1f && pointTimer <= 3f)
+        if (pointTimer > 2f && pointTimer <= 3f)
         {
             enemyPointValue = 200;
         }
-        if (pointTimer > 3f && pointTimer <= 4f)
+        if (pointTimer > 3f && pointTimer <= 5f)
         {
             enemyPointValue = 150;
         }
-        if (pointTimer > 4f && pointTimer <= 5f)
+        if (pointTimer > 5f && pointTimer <= 7f)
         {
             enemyPointValue = 100;
         }
-        if (pointTimer > 5f)
+        if (pointTimer > 7f)
         {
             enemyPointValue = 50;
+        }
+    }*/
+    private void GetPoints(float time)
+    {
+        if (pointTimer <= 1.5f)
+        {
+            enemyPointValue = 250;
+            return;
+        }
+        if (pointTimer > 1.5f && pointTimer <= 3f)
+        {
+            enemyPointValue = 200;
+            return;
+        }
+        if (pointTimer > 3f && pointTimer <= 5f)
+        {
+            enemyPointValue = 150;
+            return;
+        }
+        if (pointTimer > 5f && pointTimer <= 7f)
+        {
+            enemyPointValue = 100;
+            return;
+        }
+        if (pointTimer > 7f)
+        {
+            enemyPointValue = 50;
+            return;
         }
     }
 
@@ -59,10 +84,11 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Arrow"))
         {
+            GetPoints(pointTimer);
             GameObject points = Instantiate(pointUI, transform.position, Quaternion.identity) as GameObject;
             points.transform.GetChild(0).GetComponent <Text>().text = enemyPointValue.ToString();
             Instantiate(deathSFX, transform.position, Quaternion.identity);
-            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            //Instantiate(deathParticles, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
             ScoreManager.playerScore += enemyPointValue;
             Debug.Log("EnemyDead");
@@ -74,7 +100,7 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(pointLossUI, transform.position, Quaternion.identity);
             Instantiate(deathSFX, transform.position, Quaternion.identity);
-            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            //Instantiate(deathParticles, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
             ScoreManager.playerScore -= 100;
             Debug.Log("EnemyDead");

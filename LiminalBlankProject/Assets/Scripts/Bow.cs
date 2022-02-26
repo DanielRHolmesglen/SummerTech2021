@@ -6,36 +6,40 @@ using UnityEngine;
 
 public class Bow : MonoBehaviour
 {
-    [Tooltip("Vr Primary Hand")]
-    public GameObject rightHand;
-    public Transform rightAnchor;
+    [Header("Vr Primary Hand")]
+    [SerializeField] private GameObject rightHand;
+    [Tooltip("The anchors have to be offset x.45")]
+    [SerializeField] private Transform rightAnchor;
     
-    [Tooltip("Vr Secondary Hand")]
-    public GameObject leftHand;
-    public Transform leftAnchor;
+    [Header("Vr Secondary Hand")]
+    [SerializeField] private GameObject leftHand;
+    [Tooltip("The anchors have to be offset x.45")]
+    [SerializeField] private Transform leftAnchor;
 
-    public GameObject arrowPrefab; 
-    public MeshRenderer arrowMesh;
-    public Transform arrowSpawnPoint;
-    public SkinnedMeshRenderer bowMesh;
-    public Transform bowGrabPoint;
-    public Transform fullDrawPoint;
-    public Transform arrowGrabPoint;
-    public Transform arrowNotch;
-    public Transform arrowNotchDefaultPoint;
-    public Transform stringPosition;
-    public Transform topStringPos; //line renderers are jank.
-    public Transform bottomStringPos; // it needs to be set to world pos or wont work... and updated every frame...
+
+    [SerializeField] private GameObject arrowPrefab; 
+    [SerializeField] private MeshRenderer arrowMesh;
+    [SerializeField] private Transform arrowSpawnPoint;
+    [SerializeField] private Transform bowGrabPoint;
+    [SerializeField] private Transform fullDrawPoint;
+    [SerializeField] private Transform arrowGrabPoint;
+    [SerializeField] private Transform arrowNotch;
+    [SerializeField] private Transform arrowNotchDefaultPoint;
+    [SerializeField] private ParticleSystem arrowSpawn;
+    [SerializeField] private ParticleSystem burstParticle;
+    [SerializeField] private AudioSource releaseAudioSource;
+    [SerializeField] private AudioClip[] releaseSoundsArray;
+
+    [HideInInspector]
     public bool bowIsHeld = false;
-    public ParticleSystem arrowSpawn;
-    public ParticleSystem burstParticle;
-    public AudioSource releaseAudioSource;
-    public AudioClip[] releaseSoundsArray;
-    
+
 
     [Header("Bow String")]
-    public LineRenderer bowString;
-    public Transform[] stringPoints; // it's set here... but its not.
+    [SerializeField] private LineRenderer bowString;
+    [SerializeField] private Transform[] stringPoints; // it's set here... but its not.
+    [SerializeField] private Transform stringPosition;
+    [SerializeField] private Transform topStringPos; //line renderers are jank.
+    [SerializeField] private Transform bottomStringPos; // it needs to be set to world pos or wont work... and updated every frame...
 
     public IVRInputDevice primaryInput, secondaryInput;
     
@@ -71,6 +75,7 @@ public class Bow : MonoBehaviour
         primaryInput = VRDevice.Device.PrimaryInputDevice;
         secondaryInput = VRDevice.Device.SecondaryInputDevice;
 
+        // there must be a better way to do this
         bowString.SetPosition(0, topStringPos.position);
         bowString.SetPosition(1, stringPosition.position);
         bowString.SetPosition(2, bottomStringPos.position);
@@ -208,8 +213,6 @@ public class Bow : MonoBehaviour
 
     public void SetRightHand()
     {
-        //rightHand = holdingHand;
-        //leftHand = pullingHand;
         holdingHand = rightHand;
         pullingHand = leftHand;
         anchorOffset = rightAnchor;
@@ -218,8 +221,6 @@ public class Bow : MonoBehaviour
     }
     public void SetLeftHand()
     {
-        //leftHand = holdingHand;
-        //rightHand = pullingHand;
         holdingHand = leftHand;
         pullingHand = rightHand;
         anchorOffset = leftAnchor;

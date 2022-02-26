@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
             DisplayTime(timeValue);
 
 
-            currentScore = ScoreManager.playerScore;
+            currentScore = playerScore;
             score.text = currentScore.ToString();
         }
 
