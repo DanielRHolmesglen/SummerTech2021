@@ -40,6 +40,10 @@ public class ScoreManager : MonoBehaviour
         {
             playerScore = 0;
         }
+        if (Enemy.multiplierActive == true)
+        {
+            Invoke("StopMultiplier", PowerUp.multiplerTimeLength);
+        }
     }
 
     void DisplayTime(float timeToDisplay)
@@ -50,5 +54,8 @@ public class ScoreManager : MonoBehaviour
         gameTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-
+    void StopMultiplier()
+    {
+        Enemy.multiplierActive = false;
+    }
 }

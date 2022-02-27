@@ -5,25 +5,40 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject enemyPos;
+    private Transform playerPos;
+    public float enemySpeed;
     public GameObject pointUI;
     public GameObject pointLossUI;
+    public float enemyStartMoveDelay;
     //public ParticleSystem entryParticle;
     //public ParticleSystem deathParticles;
     public GameObject deathSFX;
     private int enemyPointValue;
     private float pointTimer;
+    private bool isMoving = false;
+    public static bool multiplierActive = false;
 
     //private float currentTime;
     // private int passoutScore;
 
+
+    private void Start()
+    {
+        playerPos = GameObject.FindWithTag("Player").transform;
+        Invoke("MoveTrue", enemyStartMoveDelay);
+    }
     private void Awake()
-    {        
+    {
         //entryParticle.Play();
-        
+
     }
     private void Update()
     {
-        pointTimer += Time.deltaTime;
+        if (isMoving == true)
+        {
+            StartMove();
+        }
         
     }
     /*
@@ -85,12 +100,16 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Arrow"))
         {
             GetPoints(pointTimer);
-            GameObject points = Instantiate(pointUI, transform.position, Quaternion.identity) as GameObject;
-            points.transform.GetChild(0).GetComponent <Text>().text = enemyPointValue.ToString();
+            if (multiplierActive == true)
+            {
+                enemyPointValue = enemyPointValue* PowerUp.multiplerAmount;
+            }            
             Instantiate(deathSFX, transform.position, Quaternion.identity);
             //Instantiate(deathParticles, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
             ScoreManager.playerScore += enemyPointValue;
+            GameObject points = Instantiate(pointUI, transform.position, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<Text>().text = enemyPointValue.ToString();
             Debug.Log("EnemyDead");
             Destroy(other.gameObject);
             Destroy(gameObject);
@@ -108,5 +127,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void StartMove()
+    {
+        enemyPos.transform.position = Vector3.Lerp(enemyPos.transform.position, playerPos.transform.position, enemySpeed/50);
+        pointTimer += Time.deltaTime;
+    }
 
+    void MoveTrue()
+    {
+        isMoving = true;
+    }
 }

@@ -107,17 +107,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddf1d71025fec2428e8bb20b99dea61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPos: {fileID: 1686669656388613733}
+  enemySpeed: 0.06
   pointUI: {fileID: 2809684154599282210, guid: e612cc2be0953bb42b3588aea3994d90, type: 3}
   pointLossUI: {fileID: 2809684154599282210, guid: 6e4f445686c6f3a49abf2a0f3f505358,
     type: 3}
-  entryParticle: {fileID: 2793665815473453821, guid: 990125fc48d102a4e8e4a4042ce63a22,
-    type: 3}
-  deathParticles: {fileID: 2793665815473453821, guid: 990125fc48d102a4e8e4a4042ce63a22,
-    type: 3}
+  enemyStartMoveDelay: 1.5
   deathSFX: {fileID: 3130801524486940424, guid: 3df410c2428cc9c4ebcab3269a7734fb,
     type: 3}
-  enemyPointValue: 0
-  pointTimer: 0
+  multiplierActive: 1
 --- !u!54 &4124218129832449181
 Rigidbody:
   m_ObjectHideFlags: 0
