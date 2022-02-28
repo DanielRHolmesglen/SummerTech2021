@@ -90,22 +90,22 @@ public class TeleportNode : MonoBehaviour
 
     }
 
-  //  public IEnumerator SendHoming(GameObject enemy)
-   // {
-     //   yield return new WaitForSeconds(enemyStartMoveDelay);
-
-
-        // I think this is causing a lag spike?
-        // may need to put it in an if statement instead
-        // when the enemy is destroyed the while loop is still looking for the enemy.
-        // and after the first one is killed it throws an error, possibly causing a lag spike, after that it ignores the error.
-       // while (Vector3.Distance(playerHead.transform.position, enemy.transform.position) > 0.3)
-       // {
-       //     enemy.transform.position += (playerHead.transform.position - enemy.transform.position).normalized * speedOfEnemies * Time.deltaTime;
-       //     enemy.transform.LookAt(playerHead.transform);
-        //    yield return null;
-       // }
-  //  }
+    //public IEnumerator SendHoming(GameObject enemy)
+    //{
+    //    yield return new WaitForSeconds(enemyStartMoveDelay);
+    //
+    //
+    //   //I think this is causing a lag spike?
+    //   //may need to put it in an if statement instead
+    //   //when the enemy is destroyed the while loop is still looking for the enemy.
+    //   //and after the first one is killed it throws an error, possibly causing a lag spike, after that it ignores the error.
+    //   while (enemy != null && Vector3.Distance(playerHead.transform.position, enemy.transform.position) > 0.3)
+    //   {
+    //       enemy.transform.position += (playerHead.transform.position - enemy.transform.position).normalized * speedOfEnemies * Time.deltaTime;
+    //       enemy.transform.LookAt(playerHead.transform);
+    //       yield return null;
+    //   }
+    //}
 
     void EnemySpawn()
     {

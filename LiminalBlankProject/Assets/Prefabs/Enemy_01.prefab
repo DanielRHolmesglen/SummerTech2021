@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1686669656388613728}
   - component: {fileID: 1686669656388613729}
   - component: {fileID: 1686669656388613734}
-  - component: {fileID: 4687030704488547491}
   - component: {fileID: 4330743011682334703}
   - component: {fileID: 4124218129832449181}
+  - component: {fileID: 8819400823205665069}
   m_Layer: 0
   m_Name: Enemy_01
   m_TagString: Untagged
@@ -82,19 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4687030704488547491
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686669656388613733}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5, z: 2}
-  m_Center: {x: 0, y: 0, z: -0.2}
 --- !u!114 &4330743011682334703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +102,6 @@ MonoBehaviour:
   enemyStartMoveDelay: 1.5
   deathSFX: {fileID: 3130801524486940424, guid: 3df410c2428cc9c4ebcab3269a7734fb,
     type: 3}
-  multiplierActive: 1
 --- !u!54 &4124218129832449181
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,6 +118,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8819400823205665069
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686669656388613733}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.8
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &425120748216255264
 Animator:
   serializedVersion: 3
@@ -285,11 +284,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1686669656388613728}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 203ef403b6f845143a25cea6a75e8c03,
-        type: 3}
-      propertyPath: m_Name
-      value: Sentianldrone
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 203ef403b6f845143a25cea6a75e8c03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -359,6 +353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 203ef403b6f845143a25cea6a75e8c03,
+        type: 3}
+      propertyPath: m_Name
+      value: Sentianldrone
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 203ef403b6f845143a25cea6a75e8c03,
         type: 3}

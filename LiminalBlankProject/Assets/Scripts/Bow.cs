@@ -52,6 +52,8 @@ public class Bow : MonoBehaviour
     private MeshRenderer leftHandMesh;
     private Animator animator;
     private bool isStringHeld = false;
+    private int acuracyCounter = 0;
+    private int arrowsShotCounter = 0;
     
 
     private float pullValue = 0.0f;
@@ -149,7 +151,7 @@ public class Bow : MonoBehaviour
             arrowMesh.enabled = false;
             arrowNotch.position = arrowNotchDefaultPoint.position;
             stringPosition.position = arrowNotchDefaultPoint.position;
-
+            arrowsShotCounter++;
             pullValue = 0;
             animator.SetFloat("Blend", 0.0f);
 
@@ -170,6 +172,12 @@ public class Bow : MonoBehaviour
         arrow.transform.SetParent(null, true);
         arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
         Destroy(arrow, 2.5f);
+        //if (arrow != null)
+        //{
+        //    Destroy(arrow, 2.5f);
+        //    acuracyCounter; ;
+        //} else acuracyCounter++;
+
     }
 
     private IEnumerator CreateDummyArrow(float waitTime)
