@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPos: {fileID: 1668544617795195392}
-  enemySpeed: 0.06
+  enemySpeed: 0.3
   pointUI: {fileID: 2809684154599282210, guid: e612cc2be0953bb42b3588aea3994d90, type: 3}
   pointLossUI: {fileID: 2809684154599282210, guid: 6e4f445686c6f3a49abf2a0f3f505358,
     type: 3}

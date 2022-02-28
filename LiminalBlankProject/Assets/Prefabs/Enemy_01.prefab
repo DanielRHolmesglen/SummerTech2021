@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPos: {fileID: 1686669656388613733}
-  enemySpeed: 0.06
+  enemySpeed: 0.3
   pointUI: {fileID: 2809684154599282210, guid: e612cc2be0953bb42b3588aea3994d90, type: 3}
   pointLossUI: {fileID: 2809684154599282210, guid: 6e4f445686c6f3a49abf2a0f3f505358,
     type: 3}
@@ -284,6 +284,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1686669656388613728}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 203ef403b6f845143a25cea6a75e8c03,
+        type: 3}
+      propertyPath: m_Name
+      value: Sentianldrone
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 203ef403b6f845143a25cea6a75e8c03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -353,11 +358,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 203ef403b6f845143a25cea6a75e8c03,
-        type: 3}
-      propertyPath: m_Name
-      value: Sentianldrone
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 203ef403b6f845143a25cea6a75e8c03,
         type: 3}

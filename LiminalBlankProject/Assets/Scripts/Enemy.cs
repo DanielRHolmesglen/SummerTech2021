@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
+        pointTimer += Time.deltaTime;
         if (isMoving == true)
         {
             StartMove();
@@ -129,8 +130,8 @@ public class Enemy : MonoBehaviour
 
     void StartMove()
     {
-        enemyPos.transform.position = Vector3.Lerp(enemyPos.transform.position, playerPos.transform.position, enemySpeed/50);
-        pointTimer += Time.deltaTime;
+        enemyPos.transform.position = Vector3.Lerp(enemyPos.transform.position, playerPos.transform.position, enemySpeed * Time.deltaTime);
+        
     }
 
     void MoveTrue()
