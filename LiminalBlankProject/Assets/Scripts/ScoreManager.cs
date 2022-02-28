@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public static int playerScore;
+    public GameObject powerUpEndSFX;
+    private bool endMulti = false;
     public Text score;
     public Text gameTime;
     public Text endScore;
@@ -42,6 +44,7 @@ public class ScoreManager : MonoBehaviour
         }
         if (Enemy.multiplierActive == true)
         {
+            powerUpEndSFX.SetActive(false);
             Invoke("StopMultiplier", PowerUp.multiplerTimeLength);
         }
     }
@@ -56,6 +59,8 @@ public class ScoreManager : MonoBehaviour
 
     void StopMultiplier()
     {
+        powerUpEndSFX.SetActive(true);
         Enemy.multiplierActive = false;
     }
+
 }

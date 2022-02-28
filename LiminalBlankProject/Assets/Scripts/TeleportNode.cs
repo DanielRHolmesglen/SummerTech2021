@@ -36,7 +36,7 @@ public class TeleportNode : MonoBehaviour
 
     private void Start()
     {
-        rndSpawnTime = Random.Range(1,30);
+        rndSpawnTime = Random.Range(5,25);
         spawnPositionsSize = spawnPositions.Count;
         powerUpSpawnPositionsSize = powerUpSpawnPositions.Count;
         waveMusic.SetActive(false);
