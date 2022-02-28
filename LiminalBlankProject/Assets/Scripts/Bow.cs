@@ -16,6 +16,7 @@ public class Bow : MonoBehaviour
     [Tooltip("The anchors have to be offset x.45")]
     [SerializeField] private Transform leftAnchor;
 
+    public GameObject uiHelp;
 
     [SerializeField] private GameObject arrowPrefab; 
     [SerializeField] private MeshRenderer arrowMesh;
@@ -61,7 +62,6 @@ public class Bow : MonoBehaviour
    
     void Start()
     {
-        
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
         animator = GetComponentInChildren<Animator>();
@@ -73,7 +73,7 @@ public class Bow : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {       
         primaryInput = VRDevice.Device.PrimaryInputDevice;
         secondaryInput = VRDevice.Device.SecondaryInputDevice;
 
@@ -89,6 +89,7 @@ public class Bow : MonoBehaviour
 
         if (bowIsHeld)
         {
+            Destroy(uiHelp);
             UpdateBowPosition();
             if (isStringHeld)
             {
@@ -239,5 +240,5 @@ public class Bow : MonoBehaviour
     {
         Gizmos.DrawWireSphere(arrowGrabPoint.position, grabThreshold);
     }
-    
+
 }
