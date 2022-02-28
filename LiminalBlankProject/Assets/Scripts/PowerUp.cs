@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    public GameObject powerUpSFX;
     public int multiplerAmounts;
     public float multiplerTimeLengths;
     static public int multiplerAmount;
@@ -19,6 +20,7 @@ public class PowerUp : MonoBehaviour
     {
         if (other.CompareTag("Arrow"))
         {
+            Instantiate(powerUpSFX, transform.position, Quaternion.identity);
             Enemy.multiplierActive = true;
             Destroy(gameObject);
         }
