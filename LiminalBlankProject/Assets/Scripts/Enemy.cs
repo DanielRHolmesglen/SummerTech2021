@@ -42,31 +42,6 @@ public class Enemy : MonoBehaviour
         }
         
     }
-    /*
-    private void Update()
-    {
-        pointTimer += Time.deltaTime;
-        if (pointTimer <= 2f)
-        {
-            enemyPointValue = 250;
-        }
-        if (pointTimer > 2f && pointTimer <= 3f)
-        {
-            enemyPointValue = 200;
-        }
-        if (pointTimer > 3f && pointTimer <= 5f)
-        {
-            enemyPointValue = 150;
-        }
-        if (pointTimer > 5f && pointTimer <= 7f)
-        {
-            enemyPointValue = 100;
-        }
-        if (pointTimer > 7f)
-        {
-            enemyPointValue = 50;
-        }
-    }*/
     private void GetPoints()
     {
         if (pointTimer <= 1.5f)
@@ -94,7 +69,7 @@ public class Enemy : MonoBehaviour
             enemyPointValue = 50;
             return;
         }
-        enemyPointValue = enemyPointValue * PowerUp.multiplerAmount;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,6 +84,7 @@ public class Enemy : MonoBehaviour
             Instantiate(deathSFX, transform.position, Quaternion.identity);
             //Instantiate(deathParticles, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
+            enemyPointValue = enemyPointValue * PowerUp.multiplerAmount;
             ScoreManager.playerScore += enemyPointValue;
             GameObject points = Instantiate(pointUI, transform.position, Quaternion.identity) as GameObject;
             points.transform.GetChild(0).GetComponent<Text>().text = enemyPointValue.ToString();

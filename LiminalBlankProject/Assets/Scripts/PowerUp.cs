@@ -5,20 +5,32 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     public GameObject powerUpSFX;
-    //public int multiplerAmounts;
+    public int multiplerAmounts;
     //public float multiplerTimeLengths;
-    static public int multiplerAmount;
+    static public int multiplerAmount = 1;
     //static public float multiplerTimeLength;
 
-    public static int arrowHitTargetCount = 1;
+    public int arrowHitTargetCount = 0;
+    public int liveArrowHitCount;
+
+    //private void Update()
+    //{
+    //    liveArrowHitCount = arrowHitTargetCount;
+    //    multiplerAmounts = multiplerAmount;
+    //}
+
+    
 
     public void GetShotInfo()
     {
+        Debug.Log("Arrow Shot");
         arrowHitTargetCount++;
         //if (arrowHitTargetCount > 1) Enemy.multiplierActive = true;
-        if (arrowHitTargetCount > 3 && arrowHitTargetCount <= 5) multiplerAmount = 2; //Enemy.multiplierActive = true;
-        if (arrowHitTargetCount > 5 && arrowHitTargetCount <= 10) multiplerAmount = 5; //Enemy.multiplierActive = true;
-        if (arrowHitTargetCount > 10) multiplerAmount = 10; //Enemy.multiplierActive = true;
+        if (arrowHitTargetCount > 2 && arrowHitTargetCount <= 5) multiplerAmount = 2; //Enemy.multiplierActive = true;
+        if (arrowHitTargetCount > 5 && arrowHitTargetCount <= 10) multiplerAmount = 5;// Enemy.multiplierActive = true;
+        if (arrowHitTargetCount > 10 && arrowHitTargetCount <= 20) multiplerAmount = 10;// Enemy.multiplierActive = true;
+        if (arrowHitTargetCount > 20 && arrowHitTargetCount <= 50) multiplerAmount = 100;
+        if (arrowHitTargetCount > 50) multiplerAmount = 1000;
     }
 
     private void Start()
@@ -33,7 +45,9 @@ public class PowerUp : MonoBehaviour
         {
             //Instantiate(powerUpSFX, transform.position, Quaternion.identity);
             multiplerAmount = 1;
-            //Enemy.multiplierActive = false;
+            Debug.Log("Arrow Missed");
+            arrowHitTargetCount = 0;
+            Enemy.multiplierActive = false;
             //Destroy(gameObject);
         }
 
