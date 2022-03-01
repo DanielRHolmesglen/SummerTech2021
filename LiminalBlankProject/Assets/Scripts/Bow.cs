@@ -54,7 +54,8 @@ public class Bow : MonoBehaviour
     private bool isStringHeld = false;
     private int acuracyCounter = 0;
     private int arrowsShotCounter = 0;
-    
+
+    public PowerUp powerUpCS;
 
     private float pullValue = 0.0f;
 
@@ -151,7 +152,7 @@ public class Bow : MonoBehaviour
             arrowMesh.enabled = false;
             arrowNotch.position = arrowNotchDefaultPoint.position;
             stringPosition.position = arrowNotchDefaultPoint.position;
-            arrowsShotCounter++;
+            powerUpCS.GetShotInfo();
             pullValue = 0;
             animator.SetFloat("Blend", 0.0f);
 

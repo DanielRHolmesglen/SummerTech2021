@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
             enemyPointValue = 50;
         }
     }*/
-    private void GetPoints(float time)
+    private void GetPoints()
     {
         if (pointTimer <= 1.5f)
         {
@@ -94,17 +94,18 @@ public class Enemy : MonoBehaviour
             enemyPointValue = 50;
             return;
         }
+        enemyPointValue = enemyPointValue * PowerUp.multiplerAmount;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Arrow"))
         {
-            GetPoints(pointTimer);
-            if (multiplierActive == true)
-            {
-                enemyPointValue = enemyPointValue* PowerUp.multiplerAmount;
-            }            
+            GetPoints();
+            //if (multiplierActive == true)
+            //{
+            //    enemyPointValue = enemyPointValue * PowerUp.multiplerAmount;
+            //}            
             Instantiate(deathSFX, transform.position, Quaternion.identity);
             //Instantiate(deathParticles, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
