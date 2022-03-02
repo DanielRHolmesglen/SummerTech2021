@@ -239,7 +239,7 @@ public class Bow : MonoBehaviour
     {
         Gizmos.DrawWireSphere(arrowGrabPoint.position, grabThreshold);
     }
-    private void ShootDebugArrow() // for debugging
+    private void ShootDebugArrow() 
     {
         pullValue = 1;
         FireArrow(pullValue);
