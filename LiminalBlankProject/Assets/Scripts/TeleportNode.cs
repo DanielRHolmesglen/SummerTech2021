@@ -8,15 +8,15 @@ public class TeleportNode : MonoBehaviour
     public GameObject player;
     public GameObject playerHead;
     // public Transform playerPos;
-    public GameObject[] powerUpType;
-    public List<GameObject> powerUpSpawnPositions;
+    //public GameObject[] powerUpType;
+    //public List<GameObject> powerUpSpawnPositions;
     public GameObject[] enemyType;
     public GameObject nextNode;
     public GameObject waveMusic;
     // public Transform playerTeleportLocation;
     public List<GameObject> spawnPositions;
     private int spawnPositionsSize;
-    private int powerUpSpawnPositionsSize;
+    //private int powerUpSpawnPositionsSize;
     public int numberOfEnemiesToSpawn;
     private int enemiesSpawned;
     //public int speedOfEnemies;
@@ -38,7 +38,7 @@ public class TeleportNode : MonoBehaviour
     {
         rndSpawnTime = Random.Range(5,25);
         spawnPositionsSize = spawnPositions.Count;
-        powerUpSpawnPositionsSize = powerUpSpawnPositions.Count;
+        //powerUpSpawnPositionsSize = powerUpSpawnPositions.Count;
         waveMusic.SetActive(false);
         timerTxt.SetActive(false);
         nextNode.SetActive(false);
@@ -131,9 +131,9 @@ public class TeleportNode : MonoBehaviour
         readyToSpawn = true;
     }
 
-    void PowerUpSpawn()
-    {
-        GameObject powerUpItem = Instantiate(powerUpType[Random.Range(0, powerUpType.Length)], powerUpSpawnPositions[Random.Range(0, powerUpSpawnPositionsSize)].transform.position, transform.rotation);       
-    }
+    //void PowerUpSpawn()
+    //{
+    //    GameObject powerUpItem = Instantiate(powerUpType[Random.Range(0, powerUpType.Length)], powerUpSpawnPositions[Random.Range(0, powerUpSpawnPositionsSize)].transform.position, transform.rotation);       
+    //}
 
 }

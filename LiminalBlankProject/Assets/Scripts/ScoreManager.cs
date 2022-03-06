@@ -34,19 +34,22 @@ public class ScoreManager : MonoBehaviour
             currentScore = playerScore;
             score.text = currentScore.ToString();
         }
-
-        endScore.text = score.text;
-        endGameTime.text = gameTime.text;
+        if (BossDeath.bossDefeated)
+        {
+            endScore.text = score.text;
+            endGameTime.text = gameTime.text;
+        }
+        
 
         if (playerScore <= 0)
         {
             playerScore = 0;
         }
-        if (Enemy.multiplierActive == true)
-        {
-            powerUpEndSFX.SetActive(false);
-            Invoke("StopMultiplier", PowerUp.multiplerTimeLength);
-        }
+        //if (Enemy.multiplierActive == true)
+        //{
+        //    powerUpEndSFX.SetActive(false);
+        //    Invoke("StopMultiplier", PowerUp.multiplerTimeLength);
+        //}
     }
 
     void DisplayTime(float timeToDisplay)
@@ -57,10 +60,10 @@ public class ScoreManager : MonoBehaviour
         gameTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void StopMultiplier()
-    {
-        powerUpEndSFX.SetActive(true);
-        Enemy.multiplierActive = false;
-    }
+    //void StopMultiplier()
+    //{
+    //    powerUpEndSFX.SetActive(true);
+    //    Enemy.multiplierActive = false;
+    //}
 
 }
