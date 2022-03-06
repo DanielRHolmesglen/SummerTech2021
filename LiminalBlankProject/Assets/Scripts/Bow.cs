@@ -8,15 +8,14 @@ public class Bow : MonoBehaviour
 {
     [Header("Vr Primary Hand")]
     [SerializeField] private GameObject rightHand;
-    [Tooltip("The anchors have to be offset x.45")]
+    [Tooltip("The anchors have to be rotated 45,0,0")]
     [SerializeField] private Transform rightAnchor;
     
     [Header("Vr Secondary Hand")]
     [SerializeField] private GameObject leftHand;
-    [Tooltip("The anchors have to be offset x.45")]
+    [Tooltip("The anchors have to be rotated 45,0,0")]
     [SerializeField] private Transform leftAnchor;
 
-    public GameObject uiHelp;
 
     [SerializeField] private GameObject arrowPrefab; 
     [SerializeField] private MeshRenderer arrowMesh;
@@ -53,15 +52,15 @@ public class Bow : MonoBehaviour
     private MeshRenderer leftHandMesh;
     private Animator animator;
     private bool isStringHeld = false;
-    private int acuracyCounter = 0;
-    private int arrowsShotCounter = 0;
-    
+
+    public PowerUp powerUpCS;
 
     private float pullValue = 0.0f;
 
    
     void Start()
     {
+        
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
         animator = GetComponentInChildren<Animator>();
@@ -73,7 +72,7 @@ public class Bow : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {       
+    {
         primaryInput = VRDevice.Device.PrimaryInputDevice;
         secondaryInput = VRDevice.Device.SecondaryInputDevice;
 
@@ -87,9 +86,17 @@ public class Bow : MonoBehaviour
             BowDropped();
         }
 
+        //if (Input.GetKeyDown("mouse 1")) // debug
+        //{
+        //    ShootDebugArrow();
+        //}
+        //if (Input.GetKeyDown("mouse 0"))
+        //{
+        //    powerUpCS.GetShotInfo();
+        //}
+
         if (bowIsHeld)
         {
-            Destroy(uiHelp);
             UpdateBowPosition();
             if (isStringHeld)
             {
@@ -105,7 +112,8 @@ public class Bow : MonoBehaviour
                 if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) == false || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger) == false)
                     
                 {
-                    //bowMesh.material.SetColor("_Color", Color.cyan);
+                    //enable hand mesh
+                    // disable string pull hand
                     isStringHeld = false;
                     Release();
                 }
@@ -125,18 +133,18 @@ public class Bow : MonoBehaviour
     }
 
     
-    public void ReadyPull(GameObject hand) // assign pullHand
+    public void ReadyPull(GameObject hand)
     {
         float distance = Vector3.Distance(hand.transform.position, arrowGrabPoint.position);
         
         if(distance < grabThreshold)
         {
-            //bowMesh.material.SetColor("_Color", Color.green);
-            //play grab string particle FX
+            // grab string effect
             if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger))
             
             {
-                //bowMesh.material.SetColor("_Color", Color.yellow);
+                //disable hand mesh
+                //Enable string pull hand
                 isStringHeld = true;
             }
         } else { return; }
@@ -152,7 +160,7 @@ public class Bow : MonoBehaviour
             arrowMesh.enabled = false;
             arrowNotch.position = arrowNotchDefaultPoint.position;
             stringPosition.position = arrowNotchDefaultPoint.position;
-            arrowsShotCounter++;
+            powerUpCS.GetShotInfo();
             pullValue = 0;
             animator.SetFloat("Blend", 0.0f);
 
@@ -173,12 +181,6 @@ public class Bow : MonoBehaviour
         arrow.transform.SetParent(null, true);
         arrow.GetComponent<Rigidbody>().AddForce(transform.forward * (pullValue * moveSpeed));
         Destroy(arrow, 2.5f);
-        //if (arrow != null)
-        //{
-        //    Destroy(arrow, 2.5f);
-        //    acuracyCounter; ;
-        //} else acuracyCounter++;
-
     }
 
     private IEnumerator CreateDummyArrow(float waitTime)
@@ -189,9 +191,6 @@ public class Bow : MonoBehaviour
         arrowMesh.enabled = true;
 
     }
-
-
-   
 
     private void UpdateBowPosition()
     {
@@ -240,5 +239,11 @@ public class Bow : MonoBehaviour
     {
         Gizmos.DrawWireSphere(arrowGrabPoint.position, grabThreshold);
     }
-
+    private void ShootDebugArrow() 
+    {
+        pullValue = 1;
+        FireArrow(pullValue);
+        powerUpCS.GetShotInfo();
+        pullValue = 0;
+    }
 }
