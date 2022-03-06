@@ -17,6 +17,7 @@ public class Bow : MonoBehaviour
     [SerializeField] private Transform leftAnchor;
 
 
+    public GameObject helpUI;
     [SerializeField] private GameObject arrowPrefab; 
     [SerializeField] private MeshRenderer arrowMesh;
     [SerializeField] private Transform arrowSpawnPoint;
@@ -97,6 +98,7 @@ public class Bow : MonoBehaviour
 
         if (bowIsHeld)
         {
+            helpUI.SetActive(false);
             UpdateBowPosition();
             if (isStringHeld)
             {
