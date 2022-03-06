@@ -23,7 +23,7 @@ public class TeleportNode : MonoBehaviour
     public float enemySpawnTimer;
    // public float enemyStartMoveDelay;
     public static int enemiesKilled;
-    private int rndSpawnTime;
+    //private int rndSpawnTime;
     bool startStage;
     bool readyToSpawn;
 
@@ -36,7 +36,7 @@ public class TeleportNode : MonoBehaviour
 
     private void Start()
     {
-        rndSpawnTime = Random.Range(5,25);
+        //rndSpawnTime = Random.Range(5,25);
         spawnPositionsSize = spawnPositions.Count;
         //powerUpSpawnPositionsSize = powerUpSpawnPositions.Count;
         waveMusic.SetActive(false);
@@ -77,7 +77,7 @@ public class TeleportNode : MonoBehaviour
             RenderSettings.ambientLight = ambientWorldColour;
             timerTxt.SetActive(true);           
             StageTimer.timerOn = true;
-            Invoke("PowerUpSpawn", rndSpawnTime);
+            //Invoke("PowerUpSpawn", rndSpawnTime);
             Invoke("TimerForFirstSpawn", 1.5f);
             waveMusic.SetActive(true);
             Debug.Log("PLayerHit");

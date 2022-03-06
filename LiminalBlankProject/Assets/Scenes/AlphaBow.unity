@@ -1582,8 +1582,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
-  m_Pitch: 1
+  m_Volume: 0.293
+  m_Pitch: 0.85
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -7483,7 +7483,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: enemySpawnTimer
-      value: 1.7
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -8412,7 +8412,7 @@ PrefabInstance:
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
       propertyPath: numberOfEnemiesToSpawn
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 348410202917688053, guid: 59cfc24190bacd445973b56e2c891f51,
         type: 3}
@@ -11329,7 +11329,37 @@ PrefabInstance:
         type: 3}
       propertyPath: missSound
       value: 
-      objectReference: {fileID: 8300000, guid: abe5c445b1726ed4faf69506d9ce0ae7, type: 3}
+      objectReference: {fileID: 8300000, guid: fa9cb10cf71b4a349812f009f5b92179, type: 3}
+    - target: {fileID: 3985701282093325548, guid: 537208b8d4128ba4db1407802e48a625,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -123
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985701282093325548, guid: 537208b8d4128ba4db1407802e48a625,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985701282093325548, guid: 537208b8d4128ba4db1407802e48a625,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985701281251611685, guid: 537208b8d4128ba4db1407802e48a625,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 224.99951
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985701280949660559, guid: 537208b8d4128ba4db1407802e48a625,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -78
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985701280949660559, guid: 537208b8d4128ba4db1407802e48a625,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.27
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 537208b8d4128ba4db1407802e48a625, type: 3}
 --- !u!1 &3985701281079901335 stripped

@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     private int enemyPointValue;
     private float pointTimer;
     private bool isMoving = false;
-    public static bool multiplierActive = false;
+    //public static bool multiplierActive = false;
 
     //private float currentTime;
     // private int passoutScore;
@@ -77,12 +77,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Arrow"))
         {
             GetPoints();
-            //if (multiplierActive == true)
-            //{
-            //    enemyPointValue = enemyPointValue * PowerUp.multiplerAmount;
-            //}            
             Instantiate(deathSFX, transform.position, Quaternion.identity);
-            //Instantiate(deathParticles, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
             enemyPointValue = enemyPointValue * PowerUp.multiplerAmount;
             ScoreManager.playerScore += enemyPointValue;
@@ -96,8 +91,6 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Instantiate(pointLossUI, transform.position, Quaternion.identity);
-            Instantiate(deathSFX, transform.position, Quaternion.identity);
-            //Instantiate(deathParticles, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
             ScoreManager.playerScore -= 100;
             Debug.Log("EnemyDead");

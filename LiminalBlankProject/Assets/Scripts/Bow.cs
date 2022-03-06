@@ -28,7 +28,6 @@ public class Bow : MonoBehaviour
     [SerializeField] private Transform arrowNotchDefaultPoint;
     [SerializeField] private ParticleSystem arrowSpawn;
     [SerializeField] private ParticleSystem burstParticle;
-    [SerializeField] private AudioSource releaseAudioSource;
     [SerializeField] private AudioClip[] releaseSoundsArray;
 
     [HideInInspector]
@@ -43,7 +42,10 @@ public class Bow : MonoBehaviour
     [SerializeField] private Transform bottomStringPos; // it needs to be set to world pos or wont work... and updated every frame...
 
     public IVRInputDevice primaryInput, secondaryInput;
-    
+
+
+    private AudioSource releaseAudioSource;
+    private float audioPitch;
     private float grabThreshold = 0.15f;
     private float moveSpeed = 2000f;
     private GameObject holdingHand;
@@ -61,7 +63,7 @@ public class Bow : MonoBehaviour
    
     void Start()
     {
-        
+        releaseAudioSource = GetComponent<AudioSource>();
         rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
         leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
         animator = GetComponentInChildren<Animator>();
@@ -157,6 +159,8 @@ public class Bow : MonoBehaviour
         if (pullValue > 0.5f)
         {
             FireArrow(pullValue);
+            audioPitch = Random.Range(0.6f, 1.2f);
+            releaseAudioSource.pitch = audioPitch;
             AudioClip releaseSFX = releaseSoundsArray[Random.Range(0, releaseSoundsArray.Length)];
             releaseAudioSource.PlayOneShot(releaseSFX);
             arrowMesh.enabled = false;
