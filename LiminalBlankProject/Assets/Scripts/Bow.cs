@@ -8,12 +8,12 @@ public class Bow : MonoBehaviour
 {
     [Header("Vr Primary Hand")]
     [SerializeField] private GameObject rightHand;
-    [Tooltip("The anchors have to be rotated 45,0,0")]
+    [Tooltip("The anchors have to be rotated 45,0,0 so the bow is held correctly" )]
     [SerializeField] private Transform rightAnchor;
     
     [Header("Vr Secondary Hand")]
     [SerializeField] private GameObject leftHand;
-    [Tooltip("The anchors have to be rotated 45,0,0")]
+    [Tooltip("The anchors have to be rotated 45,0,0 so the bow is held correctly")]
     [SerializeField] private Transform leftAnchor;
 
 
@@ -51,8 +51,8 @@ public class Bow : MonoBehaviour
     private GameObject holdingHand;
     private GameObject pullingHand;
     private Transform anchorOffset;
-    private MeshRenderer rightHandMesh;
-    private MeshRenderer leftHandMesh;
+    private SkinnedMeshRenderer rightHandMesh;
+    private SkinnedMeshRenderer leftHandMesh;
     private Animator animator;
     private bool isStringHeld = false;
 
@@ -64,8 +64,8 @@ public class Bow : MonoBehaviour
     void Start()
     {
         releaseAudioSource = GetComponent<AudioSource>();
-        rightHandMesh = rightHand.GetComponentInChildren<MeshRenderer>();
-        leftHandMesh = leftHand.GetComponentInChildren<MeshRenderer>();
+        rightHandMesh = rightHand.GetComponentInChildren<SkinnedMeshRenderer>();
+        leftHandMesh = leftHand.GetComponentInChildren<SkinnedMeshRenderer>();
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(CreateDummyArrow(0.0f));
         arrowNotchDefaultPoint.position = arrowNotch.position;
@@ -192,7 +192,6 @@ public class Bow : MonoBehaviour
     private IEnumerator CreateDummyArrow(float waitTime)
     {
         arrowSpawn.Play();
-        // play arrow spawn particle fx
         yield return new WaitForSeconds(waitTime);
         arrowMesh.enabled = true;
 

@@ -16,6 +16,7 @@ public class PowerUp : MonoBehaviour
     public int arrowHitTargetCount = 0;
     public int liveArrowHitCount;
     int lastMultiplierAmount;
+    bool multiplierSoundPlayed = true;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class PowerUp : MonoBehaviour
         {
             sFXSource.PlayOneShot(powerUpSound);
             lastMultiplierAmount = multiplerAmount;
+            multiplierSoundPlayed = false;
         }
     }
 
@@ -66,10 +68,17 @@ public class PowerUp : MonoBehaviour
             lastMultiplierAmount = 1;
             Debug.Log("Arrow Missed");
             arrowHitTargetCount = 0;
-            //Enemy.multiplierActive = false;
-            sFXSource.PlayOneShot(missSound);
+            if (!multiplierSoundPlayed)
+            {
+                playMissSound();
+            }
         }
 
+    }
+    private void playMissSound()
+    {
+        sFXSource.PlayOneShot(missSound);
+        multiplierSoundPlayed = true;
     }
 
 

@@ -110,8 +110,9 @@ public class TeleportNode : MonoBehaviour
     void EnemySpawn()
     {
         GameObject enemy = Instantiate(enemyType[Random.Range(0, enemyType.Length)], spawnPositions[Random.Range(0, spawnPositionsSize)].transform.position, transform.rotation);
+        enemy.GetComponent<Enemy>().playerPos = playerHead.transform;
         enemy.transform.LookAt(playerHead.transform);
-      //  StartCoroutine(SendHoming(enemy));
+        //  StartCoroutine(SendHoming(enemy));
        
         readyToSpawn = false;
         enemiesSpawned++;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public GameObject enemyPos;
-    private Transform playerPos;
+    public Transform playerPos;
     public float enemySpeed;
     public GameObject pointUI;
     public GameObject pointLossUI;
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        playerPos = GameObject.FindWithTag("Player").transform;
+        //playerPos = GameObject.FindWithTag("Player").transform;
         Invoke("MoveTrue", enemyStartMoveDelay);
     }
     private void Awake()
