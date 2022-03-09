@@ -12,7 +12,7 @@ public class SetHandTrigger : MonoBehaviour
     [Header("Vr Secondary Hand")]
     [SerializeField] private GameObject leftHand;
 
-    public IVRInputDevice primaryInput, secondaryInput;
+    private IVRInputDevice primaryInput, secondaryInput;
     private Bow bow;
     [SerializeField] private GameObject bowGrabPoint;
 
@@ -24,9 +24,15 @@ public class SetHandTrigger : MonoBehaviour
 
     private void Update()
     {
-        primaryInput = VRDevice.Device.PrimaryInputDevice;
-        secondaryInput = VRDevice.Device.SecondaryInputDevice;
-        
+        if (primaryInput == null)
+        {
+            primaryInput = VRDevice.Device.PrimaryInputDevice;
+        }
+        if (secondaryInput == null)
+        {
+            secondaryInput = VRDevice.Device.SecondaryInputDevice;
+        }
+
         if (bow.bowIsHeld == false)
         {
             float rightDistance = Vector3.Distance(rightHand.transform.position, bowGrabPoint.transform.position);

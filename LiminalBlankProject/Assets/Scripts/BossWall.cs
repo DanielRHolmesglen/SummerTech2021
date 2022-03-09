@@ -6,7 +6,7 @@ public class BossWall : MonoBehaviour
 {
     void Start()
     {
-        Invoke("ObjectKill", 12f);
+        Invoke("ObjectKill", 11f);
     }
 
     void ObjectKill()

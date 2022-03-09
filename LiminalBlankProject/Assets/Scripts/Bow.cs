@@ -36,12 +36,12 @@ public class Bow : MonoBehaviour
 
     [Header("Bow String")]
     [SerializeField] private LineRenderer bowString;
-    [SerializeField] private Transform[] stringPoints; // it's set here... but its not.
+    [SerializeField] private Transform[] stringPoints; 
     [SerializeField] private Transform stringPosition;
-    [SerializeField] private Transform topStringPos; //line renderers are jank.
+    [SerializeField] private Transform topStringPos; 
     [SerializeField] private Transform bottomStringPos; // it needs to be set to world pos or wont work... and updated every frame...
 
-    public IVRInputDevice primaryInput, secondaryInput;
+    private IVRInputDevice primaryInput, secondaryInput;
 
 
     private AudioSource releaseAudioSource;
@@ -76,10 +76,15 @@ public class Bow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        primaryInput = VRDevice.Device.PrimaryInputDevice;
-        secondaryInput = VRDevice.Device.SecondaryInputDevice;
-
-        // there must be a better way to do this
+        if (primaryInput == null)
+        {
+            primaryInput = VRDevice.Device.PrimaryInputDevice;
+        }
+        if (secondaryInput == null)
+        {
+            secondaryInput = VRDevice.Device.SecondaryInputDevice;
+        }
+        
         bowString.SetPosition(0, topStringPos.position);
         bowString.SetPosition(1, stringPosition.position);
         bowString.SetPosition(2, bottomStringPos.position);
@@ -147,8 +152,6 @@ public class Bow : MonoBehaviour
             if (pullingHand == rightHand && primaryInput.GetButton(VRButton.Trigger) || pullingHand == leftHand && secondaryInput.GetButton(VRButton.Trigger))
             
             {
-                //disable hand mesh
-                //Enable string pull hand
                 isStringHeld = true;
             }
         } else { return; }
@@ -156,7 +159,7 @@ public class Bow : MonoBehaviour
 
     public void Release()  
     {
-        if (pullValue > 0.5f)
+        if (pullValue > 0.3f)
         {
             FireArrow(pullValue);
             audioPitch = Random.Range(0.6f, 1.2f);
