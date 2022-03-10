@@ -10,8 +10,7 @@ public class BossDeath : MonoBehaviour
     public GameObject pointUI;
     public static bool bossDefeated = false;
     private int bossPoints = 2500;
-    
-    
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,7 +22,7 @@ public class BossDeath : MonoBehaviour
             bossDefeated = true;
             bossPoints = bossPoints * PowerUp.multiplerAmount;
             GameObject points = Instantiate(pointUI, transform.position, Quaternion.identity);
-            points.transform.localScale = new Vector3(3, 3, 3);
+            //points.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             points.transform.GetChild(0).GetComponent<Text>().text = bossPoints.ToString();
         }
 

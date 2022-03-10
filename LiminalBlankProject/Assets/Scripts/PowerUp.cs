@@ -21,6 +21,7 @@ public class PowerUp : MonoBehaviour
     private void Start()
     {
         sFXSource = GetComponent<AudioSource>();
+        lastMultiplierAmount = multiplerAmount;
     }
 
     private void Update()
@@ -35,7 +36,7 @@ public class PowerUp : MonoBehaviour
 
     public void GetShotInfo()
     {
-        Debug.Log("Arrow Shot");
+        //Debug.Log("Arrow Shot");
         arrowHitTargetCount++;
 
         if (arrowHitTargetCount > 2 && arrowHitTargetCount <= 5) 
@@ -66,7 +67,7 @@ public class PowerUp : MonoBehaviour
         {
             multiplerAmount = 1;
             lastMultiplierAmount = 1;
-            Debug.Log("Arrow Missed");
+            //Debug.Log("Arrow Missed");
             arrowHitTargetCount = 0;
             if (!multiplierSoundPlayed)
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeleportNode : MonoBehaviour
 {
-    public GameObject timerTxt;
+    //public GameObject timerTxt;
     public GameObject player;
     public GameObject playerHead;
     // public Transform playerPos;
@@ -40,7 +40,7 @@ public class TeleportNode : MonoBehaviour
         spawnPositionsSize = spawnPositions.Count;
         //powerUpSpawnPositionsSize = powerUpSpawnPositions.Count;
         waveMusic.SetActive(false);
-        timerTxt.SetActive(false);
+        //timerTxt.SetActive(false);
         nextNode.SetActive(false);
         startStage = false;
         readyToSpawn = false;
@@ -75,7 +75,7 @@ public class TeleportNode : MonoBehaviour
             skybox.SetColor("_Tint", skyTintColour);
             skybox.SetFloat("_Exposure", skyExposure);
             RenderSettings.ambientLight = ambientWorldColour;
-            timerTxt.SetActive(true);           
+            //timerTxt.SetActive(true);           
             StageTimer.timerOn = true;
             //Invoke("PowerUpSpawn", rndSpawnTime);
             Invoke("TimerForFirstSpawn", 1.5f);
@@ -122,7 +122,7 @@ public class TeleportNode : MonoBehaviour
 
     void TimerForFirstSpawn()
     {
-        timerTxt.SetActive(false);
+        //timerTxt.SetActive(false);
         startStage = true;
         readyToSpawn = true;
     }

@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Liminal.SDK.VR;
 using Liminal.SDK.VR.Input;
+//using UnityEngine.UI;
 
 public class HandAnimator : MonoBehaviour
 {
-    //[SerializeField] GameObject hand;
     [SerializeField] bool isRightHand = true;
-    private IVRInputDevice primaryInput, secondaryInput;
+    public IVRInputDevice primaryInput, secondaryInput;
     Animator anim;
+
+    //public Text temp;
+    private float rightTriggerValue;
+    private float leftTriggerValue;
 
     // Start is called before the first frame update
     void Start()
@@ -31,19 +35,27 @@ public class HandAnimator : MonoBehaviour
 
         // Tried to get the value of how much the trigger was being pulled. Couldn't get it working.
 
-        //float rightTriggerValue = primaryInput.GetAxis1D(VRAxis.TwoRaw);
-        //float leftTriggerValue = secondaryInput.GetAxis1D(VRAxis.TwoRaw);
-        //
-        //if (isRightHand) anim.SetFloat("Blend", rightTriggerValue);
-        //if (!isRightHand) anim.SetFloat("Blend", leftTriggerValue);
+        if (primaryInput != null)
+        {
+            rightTriggerValue = primaryInput.GetAxis1D(VRAxis.Two);
+        }
+        if (secondaryInput != null)
+        {
+            leftTriggerValue = secondaryInput.GetAxis1D(VRAxis.Two);
+        }
 
-        if (isRightHand && primaryInput.GetButton(VRButton.Trigger) == true || !isRightHand && secondaryInput.GetButton(VRButton.Trigger) == true)
-        {
-            anim.SetFloat("Blend", 1);
-        }
-        else if (isRightHand && primaryInput.GetButton(VRButton.Trigger) == false || !isRightHand && secondaryInput.GetButton(VRButton.Trigger) == false)
-        {
-            anim.SetFloat("Blend", 0);
-        }
+        //temp.text = $"{rightTriggerValue}  {leftTriggerValue}";
+
+        if (isRightHand) anim.SetFloat("Blend", rightTriggerValue);
+        if (!isRightHand) anim.SetFloat("Blend", leftTriggerValue);
+
+        //if (isRightHand && primaryInput.GetButton(VRButton.Trigger) == true || !isRightHand && secondaryInput.GetButton(VRButton.Trigger) == true)
+        //{
+        //    anim.SetFloat("Blend", 1);
+        //}
+        //else if (isRightHand && primaryInput.GetButton(VRButton.Trigger) == false || !isRightHand && secondaryInput.GetButton(VRButton.Trigger) == false)
+        //{
+        //    anim.SetFloat("Blend", 0);
+        //}
     }
 }
