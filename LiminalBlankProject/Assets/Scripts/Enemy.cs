@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
             ScoreManager.playerScore += enemyPointValue;
             GameObject points = Instantiate(pointUI, transform.position, Quaternion.identity) as GameObject;
             points.transform.GetChild(0).GetComponent<Text>().text = enemyPointValue.ToString();
-            Debug.Log("EnemyDead");
+            //Debug.Log("EnemyDead");
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
             Instantiate(pointLossUI, transform.position, Quaternion.identity);
             TeleportNode.enemiesKilled++;
             ScoreManager.playerScore -= 100;
-            Debug.Log("EnemyDead");
+            //Debug.Log("EnemyDead");
             Destroy(gameObject);
         }
     }

@@ -80,7 +80,7 @@ public class TeleportNode : MonoBehaviour
             //Invoke("PowerUpSpawn", rndSpawnTime);
             Invoke("TimerForFirstSpawn", 1.5f);
             waveMusic.SetActive(true);
-            Debug.Log("PLayerHit");
+            //Debug.Log("PLayerHit");
         }
 
        // if (other.gameObject.tag == "Arrow")

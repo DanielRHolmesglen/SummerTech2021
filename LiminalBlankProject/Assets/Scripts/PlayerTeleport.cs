@@ -24,7 +24,7 @@ public class PlayerTeleport : MonoBehaviour
         {
             teleportSFX.SetActive (true);
             fadeUI.SetActive(true);
-            Debug.Log("Teleport");
+            //Debug.Log("Teleport");
             playerPos.position = Vector3.Lerp(playerPos.position, playerTeleportLocation.position, 0.4f);
             Invoke("StopTeleport", 0.45f);
         }
